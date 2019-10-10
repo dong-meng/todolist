@@ -1,0 +1,37 @@
+.w(@px){
+    width: unit(@px/@root,rem)
+}
+.h(@px){
+    height: unit(@px/@root,rem);
+}
+.top(@px){
+    top: unit(@px/@root,rem)
+}
+.right(@px){
+    right: unit(@px/@root,rem)
+}
+.bottom(@px){
+    bottom: unit(@px/@root,rem)
+}
+.left(@px){
+    left: unit(@px/@root,rem)
+}
+
+.border(@color:gray){
+    border: 1px solid @color;
+}
+.background(@color:#333){
+    background: @color;
+}
+.margin(@tb,@lr){
+    margin-top: unit(@tb/@root,rem);
+    margin-bottom: unit(@tb/@root,rem);
+    margin-left: unit( @lr/@root,rem);
+    margin-right: unit( @lr/@root,rem);
+}
+.padding(@tb,@lr){
+    padding-top: unit(@tb/@root,rem);
+    padding-bottom: unit(@tb/@root,rem);
+    padding-left: unit( @lr/@root,rem);
+    padding-right: unit( @lr/@root,rem);
+}

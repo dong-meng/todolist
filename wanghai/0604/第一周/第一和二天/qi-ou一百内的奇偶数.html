@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="first" value="">
+    <input type="button" id="but" value="判断">
+    <input type="text" id="rest" value="">
+    <script>
+        but.onclick = function() {
+            var firstNum = first.value
+            var firstNum = parseFloat(firstNum)
+                // console.log(firstNum)
+            var yu = firstNum % 2
+                // console.log(yu == 1)
+            if (yu == 1) {
+                res = ('为奇数')
+            } else {
+                res = ('为偶数')
+            }
+            rest.value = res
+        }
+    </script>
+</body>
+
+</html>

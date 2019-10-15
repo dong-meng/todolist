@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background: blue;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="d1"></div>
+    <p>坐标为：<b id="show">(0,0)</b></p>
+    <script>
+        // var div = document.getElementsByTagName('div')
+        //     // window.onload = function() {
+        // div.onmousemove = function(ev) {
+        //         var ev = ev || window.event
+        //         var X = ev.offsetX
+        //         var Y = ev.offsetY
+        //         console.log(X, Y)
+        //     }
+        // }
+        // div.onmousemove(function() {
+        //     var x = event.offsetX;
+        //     var y = event.offsetY;
+        //     console.log("相对坐标x:" + x + ",Y:" + y + "<br>");
+        // })
+
+        var d1 = document.getElementById('d1')
+        var showObj = document.getElementById('show');
+        d1.onmousemove = function(event) {
+            var e = event || window.event;
+            var m_x = e.clientX; //获取鼠标横坐标，x轴坐标
+            var m_y = e.clientY; //获取鼠标竖坐标，y轴坐标
+            //获取div的坐标
+            var d_x = this.offsetLeft;
+            var d_y = this.offsetTop;
+            var x = m_x - d_x;
+            var y = m_y - d_y;
+            showObj.innerHTML = "(" + x + "," + y + ")"
+            console.log("(" + x + "," + y + ")")
+        }
+    </script>
+</body>
+
+</html>

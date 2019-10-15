@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 反转字符串
+        var str = 'abcdefg'
+            // console.log(str.split("").reverse().join(""))
+            // var q = str.split("").reverse().join("+")
+            // console.log(q)
+
+        // var arr = str.split('')
+        // console.log(arr)
+        // arr = arr.reverse()
+        // console.log(arr)
+        // str = arr.join('')
+        // console.log(str)
+        var str = 'abcdefg'
+        var arr = []
+
+        function fn() {
+            for (var i = 0; i < 7; i++) {
+                arr.push(str[i])
+            }
+            return arr
+        }
+        fn()
+            //     var q = arr.reverse()
+        console.log(arr)
+        arr = arr.reverse()
+        str = arr.join('')
+        console.log(str)
+    </script>
+
+</body>
+
+</html>

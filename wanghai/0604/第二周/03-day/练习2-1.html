@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"> </div>
+
+    <script>
+        // 编写函数，把当前时间格式化成 YYYY-MM-DD HH-mm-ss
+        var time = new Date()
+        var year = time.getFullYear()
+        var month = time.getMonth()
+        var day = time.getDate()
+            //1 9 8 7 
+
+        //0--11
+        //1--31
+        //0--23
+        //0--59
+        //0--59
+        var arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+
+        function fn(x) {
+            var str = ''
+            var a = parseInt(x / 10)
+            var b = x % 10
+            if (x <= 10) {
+                str = arr[x]
+            } else if (x < 20) {
+                str = '十' + arr[b]
+            } else if (x >= 20 && b === 0) {
+                str = arr[a] + '十'
+            } else if (x > 20 && b !== 0) {
+                str = arr[a] + '十' + arr[b]
+            }
+            // console.log(str)
+            return str
+        }
+        fn(day)
+
+        function years(y) {
+            var a = parseInt(year / 1000)
+            var b = parseInt((year % 1000) / 100)
+            var c = parseInt((year % 100) / 10)
+            var d = year % 10
+            return arr[a] + arr[b] + arr[c] + arr[d]
+        }
+        years(year)
+            // console.log(years(year))
+
+        function formatDate() {
+            // 获取时间信息
+            var time = new Date()
+            var year = time.getFullYear()
+            var month = time.getMonth() + 1
+            var day = time.getDate()
+            var hour = time.getHours()
+            var minutes = time.getMinutes()
+            var seconds = time.getSeconds()
+
+            // 格式化信息 变为汉字
+            year = years(year)
+            month = fn(month)
+            day = fn(day)
+            hour = fn(hour)
+            minutes = fn(minutes)
+            seconds = fn(seconds)
+
+            var rest = year + '年' + month + '月' + day + '日' + ' ' + hour + '时' + minutes + '分' + seconds + '秒'
+            console.log(rest)
+            return rest
+        }
+        formatDate()
+
+        setInterval(
+            // 函数
+            function() {
+                var date = new Date()
+                    // formatDate()
+                box.innerText = formatDate()
+            },
+            // 间隔时间
+            1000
+        )
+    </script>
+</body>
+
+</html>

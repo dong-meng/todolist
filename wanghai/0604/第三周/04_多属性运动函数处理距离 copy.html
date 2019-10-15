@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+
+    <script>
+        var div = document.getElementsByTagName('div')[0]
+
+
+        div.addEventListener('click', function() {
+            move(this, {
+                left: 200
+            })
+        })
+
+
+        function move(ele, target) {
+
+            for (let attr in target) {
+                let timer = setInterval(() => {
+                    // 获取当前样式
+                    let curStyle = parseInt(getStyle(ele, attr))
+
+                    let speed = (target[attr] - curStyle) / 5
+                    console.log(speed)
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+
+                    console.log(curStyle)
+
+                    // 如果你的当前位置和目标位置是一样的
+                    if (curStyle === target[attr]) {
+                        // 证明该停了
+                        clearInterval(timer)
+                    } else {
+                        // 就该运动者
+                        ele.style[attr] = curStyle + speed + 'px'
+                    }
+                }, 30)
+
+            }
+
+        }
+
+
+        /*
+          1000
+            0 是现在的位置
+            从 0 ~ 1000 的 10%  100
+            现在的位置就是 100
+            从 100 ~ 1000 的 10%  190
+            现在的位置就是 190
+            从 190 ~ 1000 的 10%  271
+            ...
+                                  1000
+          100
+            现在的位置是 0
+            从 0 ~ 100 的 10%  10
+            现在的位置是 10
+            从 10 ~ 100 的 10%  19
+            现在的位置就是 19
+            从 19 ~ 100 的 10%  27.1
+            ...
+                                  100
+
+          定时器里面要获取当前的位置 和 目标位置运算
+          运算结果 / 运动系数
+
+          赋值的时候
+            当前的位置 + 运动距离
+        */
+
+        /*
+          获取非行间样式的方法
+          需要两个参数至少
+          获取哪个元素
+          获取哪个属性
+        */
+        function getStyle(ele, attr) {
+            // 获取div的非行间样式 left 属性的值
+
+            // console.log(window.getComputedStyle(ele).left)
+            // console.log(ele.currentStyle.left)
+
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele)[attr]
+            } else {
+                return ele.currentStyle[attr]
+            }
+
+
+
+
+
+
+
+
+            // if (window.getComputedStyle) {
+            //   // 如果能进入 if 的 {}
+            //   // 说明 window.getComputedStyle 是存在的
+            //   return window.getComputedStyle(ele)[attr]
+            // } else {
+            //   // 如果进入 else 的 {}
+            //   // 说明 window.getComputedStyle 不存在
+            //   return ele.currentStyle[attr]
+            // }
+        }
+    </script>
+</body>
+
+</html>

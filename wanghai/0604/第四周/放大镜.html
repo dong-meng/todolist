@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        img {
+            display: block;
+        }
+        
+        .show {
+            width: 450px;
+            /* height: 450px; */
+            border: 3px solid black;
+            margin: 30px 0 0 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mo {
+            width: 200px;
+            height: 200px;
+            display: none;
+            background: yellowgreen;
+            opacity: 0.4;
+            position: absolute;
+        }
+        
+        .pic {
+            width: 450px;
+            height: 450px;
+            position: relative;
+        }
+        
+        .bigPic {
+            border: 1px solid red;
+            position: absolute;
+            left: 101%;
+            background: url(./img/1.big.jpg)no-repeat;
+            background-size: 800px 800px;
+            background-position: 0 0;
+        }
+        
+        .smPic {
+            display: flex;
+            margin: 20px 0 15px 40px;
+        }
+        
+        P {
+            width: 54px;
+            height: 54px;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show">
+        <div class="pic">
+            <div class="mo"></div>
+            <img src="./img/1.jpg" Ssrc="./img/2.jpg" alt="">
+        </div>
+        <div class="smPic">
+            <p><img src="./img/1.small.jpg" alt=""></p>
+            <p><img src="./img/2.small.jpg" alt=""></p>
+        </div>
+        <div class="bigPic"></div>
+    </div>
+
+
+    <script src="./js/放大镜.js"></script>
+
+    <script>
+        const show = document.querySelector('.show')
+        const enlarge = new Enlarge(show)
+    </script>
+</body>
+
+</html>

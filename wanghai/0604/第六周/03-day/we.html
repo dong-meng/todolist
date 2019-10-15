@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        li {
+            list-style: none
+        }
+        
+        a {
+            text-decoration: none
+        }
+        
+        .clear:after {
+            content: "";
+            clear: both;
+            display: block;
+            height: 0;
+            overflow: hidden
+        }
+        
+        .right {
+            float: right
+        }
+        
+        .left {
+            float: left
+        }
+        
+        #header_t {
+            background: #eeeeee;
+            border-bottom: 1px solid #e5e5e5
+        }
+        
+        .wrapper {
+            width: 1200px;
+            margin: 0 auto
+        }
+        
+        .nav_t>li {
+            float: left;
+            padding: 0px 15px;
+            border-right: 1px solid #d5d5d5;
+            position: relative;
+            margin: 4px 0 5px
+        }
+        
+        .nav_t>li>a {
+            display: block;
+            line-height: 16px;
+            font-size: 12px;
+            position: relative;
+            z-index: 12;
+        }
+        
+        .nav_t>li:nth-of-type(1) a {
+            color: #ff6600
+        }
+        
+        .nav_t>li:nth-of-type(1)>a {
+            float: left;
+            padding-right: 10px
+        }
+        
+        .nav_t>li:nth-of-type(2),
+        .nav_t>li:nth-of-type(3) {
+            padding-right: 26px
+        }
+        
+        .nav_t li i {
+            display: block;
+            width: 0;
+            height: 0;
+            border: 4px solid transparent;
+            border-top-color: #666;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            z-index: 12
+        }
+        /*.header_top li i{display:block;width:0;height:0;border:4px solid transparent; border-top-color:#666; position:absolute;right:10px;top:6px;z-index:12}*/
+        
+        .nav_t>li:nth-of-type(3) a {
+            padding-left: 15px;
+        }
+        
+        .nav_t>li:nth-of-type(3) em {
+            display: block;
+            width: 10px;
+            height: 14px;
+            background: url(../img/default_icon_bg.png) no-repeat -510px -13px;
+            position: absolute;
+            left: 14px;
+            top: 2px
+        }
+        
+        .nav_t>li:nth-of-type(5) a {
+            padding-left: 22px;
+            background: url(../img/default_icon_bg.png) no-repeat -503px -43px
+        }
+        
+        .nav_t>li:nth-of-type(6) span {
+            display: block;
+            width: 123px;
+            height: 16px;
+            background: url(../img/default_icon_bg.png) no-repeat -317px -65px;
+        }
+        
+        .nav_t a:hover {
+            color: #ff0000;
+            text-decoration: underline
+        }
+        
+        .nav_t .top_nav2 {
+            position: absolute;
+            right: -1px;
+            width: 180px;
+            border: 1px solid #cccccc;
+            background: #fff;
+            padding: 10px 0 10px;
+            display: none
+        }
+        
+        .nav_t .top_nav2 li {
+            float: left;
+            width: 67px;
+            margin-left: 15px;
+            border-bottom: 1px dashed #bdbdbd
+        }
+        
+        .nav_t .top_nav2 li a {
+            font-size: 12px;
+            height: 26px;
+            line-height: 26px;
+            color: #666
+        }
+        
+        .nav_t .a_bg {
+            position: absolute;
+            top: -4px;
+            left: -1px;
+            width: 101px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #bdbdbd;
+            border-bottom: none;
+            display: none;
+            z-index: 10
+        }
+        
+        .nav_t>li:nth-of-type(3) ul {
+            width: 160px;
+            border: 1px solid #cccccc;
+            background: #fff;
+            position: absolute;
+            right: -1px;
+            display: none
+        }
+        
+        .nav_t>li:nth-of-type(3) ul li {
+            float: left;
+            margin: 10px;
+        }
+        
+        .nav_t>li:nth-of-type(3) .tbc_1 {
+            display: block;
+            width: 59px;
+            height: 79px;
+            background: url(../img/tbc.png) no-repeat -10px -100px;
+        }
+        
+        .nav_t>li:nth-of-type(3) .tbc_2 {
+            display: block;
+            width: 59px;
+            height: 79px;
+            background: url(../img/tbc.png) no-repeat -107px -100px;
+        }
+        
+        .nav_t .b_bg {
+            position: absolute;
+            top: -4px;
+            right: -1px;
+            width: 101px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #bdbdbd;
+            border-bottom: none;
+            display: none;
+            z-index: 10
+        }
+        
+        .nav_t>li:hover .top_nav2,
+        .nav_t>li:hover .a_bg,
+        .nav_t>li:hover .tbc,
+        .nav_t>li:hover .b_bg {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header_t">
+        <div class="wrapper clear">
+            <ul class="nav_t  right">
+
+                <li>
+                    <a href="#">欢迎登陆名鞋库</a>
+                    <a href="#">免费注册</a>
+                </li>
+                <li>
+                    <a href="#">我的名鞋库</a>
+                    <i></i>
+                    <div class="a_bg"></div>
+                    <ul class="top_nav2 clear">
+                        <li><a href="#">我的订单</a></li>
+                        <li><a href="#">我的积分</a></li>
+                        <li><a href="#">优惠券</a></li>
+                        <li><a href="#">商品收藏</a></li>
+                        <li><a href="#">订单管理</a></li>
+                        <li><a href="#">密码管理</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">手机名鞋库</a>
+                    <i></i>
+                    <em></em>
+                    <div class="b_bg"></div>
+                    <ul class="tbc">
+                        <li class="tbc_1"></li>
+                        <li class="tbc_2"></li>
+                    </ul>
+                </li>
+                <li><a href="#">收藏名鞋库</a></li>
+                <li><a href="#">名鞋库客服</a></li>
+                <li><span></span></li>
+
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

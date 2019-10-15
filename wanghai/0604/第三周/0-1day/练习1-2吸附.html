@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>吸附Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* html,
+        body {
+            width: 100%;
+            height: 100%;
+        } */
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background: pink;
+            border: 5px solid gray;
+            position: absolute;
+            top: 0;
+            left: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="move"></div>
+
+    <SCript>
+        var div = document.querySelector('div')
+        div.onclick = function() {
+                console.log(window.event)
+            }
+            // 鼠标按下函数
+        div.onmousedown = function() {
+                // 鼠标移动函数 
+                div.onmousemove = function(e) {
+                    e = e || window
+                    var x = e.clientX - this.clientWidth / 2 //clientWidth 获得真实宽高
+                    var y = e.clientY - this.clientHeight / 2
+                    if (x < 50) {
+                        x = 0
+                    }
+                    if (y < 50) {
+                        y = 0
+                    }
+                    console.log(maxHeight - e.clientY === this.clientHeight)
+                    var maxWidth = document.documentElement.clientWidth //获得窗口宽高
+                    var maxHeight = document.documentElement.clientHeight //获得窗口宽高
+                    console.log(maxHeight)
+                    if (y + this.clientHeight > maxHeight) {
+                        y = maxHeight - this.clientHeight
+                    }
+                    if (x + this.clientHeight > maxWidth) {
+                        x = maxWidth - this.clientHeight
+                    }
+
+                    this.style.top = y + 'px'
+                    this.style.left = x + 'px'
+
+
+
+                }
+            }
+            // 鼠标抬起函数 
+        div.onmouseup = function() {
+            div.onmousedown = null
+        }
+    </SCript>
+</body>
+
+</html>

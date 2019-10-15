@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // -先遍历数组，让挨着的两个进行比较，如果前一个比后一个大，那么就把两个换个位置
+        //  数组遍历一遍以后，那么最后一个数字就是最大的那个了
+        //  然后进行第二遍的遍历，还是按照之前的规则，第二大的数字就会跑到倒数第二的位置
+        //  以此类推，最后就会按照顺序把数组排好了
+
+        var arr = [600, 2, 5, 9, 4, 3, 12, 52, 101, 120, 131, 104, 180, 109, 46, 23, 15, 90, 100, 201, 212, 223, 49, 85, 46, 88, 32, 41, 1, 500, 1]
+
+        for (var j = 0; j < arr.length - 2; j++) {
+            for (var k = 0; k < arr.length - 1 - j; k++) {
+                if (arr[k] > arr[k + 1]) {
+                    ty = arr[k + 1]
+                    arr[k + 1] = arr[k]
+                    arr[k] = ty
+                }
+            }
+
+        }
+
+        console.log(arr)
+    </script>
+
+</body>
+
+</html>

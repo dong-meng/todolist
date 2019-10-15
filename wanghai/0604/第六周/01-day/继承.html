@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // // ES5   组合继承 （class 属于ES6）
+        // function Person() {
+        //     {
+        //         this.name = 'jske'
+        //     }
+        // } //父函数
+        // Person.prototype.sayHi = function() {}
+
+
+        // function student() { //子
+        //     // constructor() {
+        //     Person.call(this) //借用继承
+        //         // }
+        // }
+        // student.prototype = new Person() //原型继承
+        // const p = new student()
+        // console.log(p)
+
+
+
+        // ES6  extends super
+        function Person() {} //父函数
+        Person.prototype.sayBay = function() {}
+
+        class student extends Person {
+            constructor() {
+                super()
+            }
+        }
+
+        const p = new student()
+        console.log(p)
+    </script>
+</body>
+
+</html>

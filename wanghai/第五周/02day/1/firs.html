@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./cookie.js"></script>
+    <script>
+        // 获得 cookie  的值
+        const login = getCookie('login')
+        if (!login) {
+
+            window.location.href = './form.html'
+        } else {
+            srtCookie('login', 1, 70)
+        }
+    </script>
+</head>
+
+<body>
+    <h2>欢迎来到首页</h2>
+    <h2>我是马云爸爸</h2>
+</body>
+
+</html>

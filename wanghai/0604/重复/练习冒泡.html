@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        //冒泡练习
+        // 生成一个随机数组
+        var arr = []
+
+        function fn() {
+            for (var i = 1; i <= 20; i++) {
+                var num = Math.random()
+                arr.push(parseInt(num * 100))
+            }
+            return arr
+        }
+        fn()
+
+
+        // 将数组排序
+        var empty
+        for (var k = 1; k <= arr.length - 1; k++) {
+            for (var j = 0; j <= arr.length - 1 - k; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    empty = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = empty
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+
+</html>

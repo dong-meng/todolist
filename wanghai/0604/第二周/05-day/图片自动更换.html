@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            height: 200px;
+            background: gray;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img scr="" id="pic" height="100%"><img scr="" id="pic1" height="100%"><img scr="" id="pic2" height="100%"><img scr="" id="pic3" height="100%">
+        <img scr="" id="pic4" height="100%"><img scr="" id="pic5" height="100%"><img scr="" id="pic6" height="100%"><img scr="" id="pic7" height="100%">
+    </div>
+    <script>
+        // 图片自动更换
+        // 获得属于图片的随机地址
+        function fn() {
+            var k = parseInt((Math.random() * 50) + 1)
+            var url = 'img/' + k + '.jpg'
+            console.log(url)
+            return url
+        }
+        // fn()
+        // 用 ID 名获得并赋值 img 的 src 值 
+        var Body = document.querySelector('body')
+        console.log(Body)
+        var pic = document.getElementById('pic')
+            // var pic1 = document.getElementById('pic1')
+            // var pic2 = document.getElementById('pic2')
+
+        // 定时循环更换图片（即更换图片地址）
+        pic.src = fn()
+            // pic1.src = fn()
+            // pic2.src = fn()
+        setInterval(() => {
+            pic.src = fn()
+            pic1.src = fn()
+            pic2.src = fn()
+            pic3.src = fn()
+            pic4.src = fn()
+            pic5.src = fn()
+            pic6.src = fn()
+        }, 1000);
+
+
+        // Div[1].innerHTML = '<img src=' + fn() + '>'
+        // setTimeout(() => {
+        //     Body.location.reload(
+        //         // Div[1].innerHTML = 'img' + '' + 'src' + '=' + fn()
+        //     )
+
+        // }, 1000);
+    </script>
+</body>
+
+</html>

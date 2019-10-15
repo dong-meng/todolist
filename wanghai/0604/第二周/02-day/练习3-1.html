@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 去掉重复的  结果：abcd
+        var str = 'abcdacbabcbababcbabcabd'
+        var obj = {}
+            // for循环找出 元素 的多少，并然让他生成一个对象 obj
+        for (var i = 0; i < str.length; i++) {
+            var key = str[i]
+            if (obj[key]) {
+                obj[key]++
+            } else {
+                obj[key] = 1
+            }
+        }
+        console.log(obj)
+            // 利用for in 提取出对象obj 中的 name  并生成一个数组 arr
+        var arr = []
+        for (var key in obj) {
+            arr.push(key)
+        }
+        var str1 = arr.join('') // 将数组转换成字符串
+        console.log(str1)
+    </script>
+
+</body>
+
+</html>

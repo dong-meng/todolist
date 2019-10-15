@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* body {
+      background-color: skyblue;
+    } */
+    </style>
+</head>
+
+<body>
+    <button id="btn">换一个颜色</button>
+
+
+    <script>
+        // 使用 js 给 body 一个背景颜色
+        // document.body 拿到的就是 body 元素
+        // document.body.style.backgroundColor = 'rgb(0, 0, 0)'
+
+
+        // btn.onclick = function () {
+        //   // 1. 获取随机颜色，组成一个字符串
+        //   var str = 'rgb(' + fn(0, 255) + ', ' + fn(0, 255) + ', ' + fn(0, 255) + ')'
+        //   // 2. 给 body 的 style 的 backgroundColor 赋值
+        //   document.body.style.backgroundColor = str
+        // }
+
+        // 写一个功能函数
+        function fn(a, b) {
+            return Math.floor(Math.random() * (b - a + 1)) + a
+        }
+
+        // 定时器
+        // setInterval 间隔定时器
+        // setInterval(函数， 时间)
+        // 时间的单位是 ms
+        // 1s === 1000ms
+        setInterval(function() {
+            // 1. 获取随机颜色，组成一个字符串
+            var str = 'rgb(' + fn(0, 255) + ', ' + fn(0, 255) + ', ' + fn(0, 255) + ')'
+            console.log(typeof str)
+                // 2. 给 body 的 style 的 backgroundColor 赋值
+            document.body.style.backgroundColor = str
+        }, 1000)
+    </script>
+</body>
+
+</html>

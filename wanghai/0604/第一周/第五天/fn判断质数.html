@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 利用fn o判断X--Y之间的数为质数
+        function fn(x, y) {
+            for (i = x; i <= y; i++) {
+                // 假设所有书都是质数 则
+                var flag = true
+                for (var k = 2; k < i; k++) {
+                    // 判断这个数是质数
+                    if (i % k === 0) {
+                        flag = false
+                    }
+
+                }
+                if (flag) {
+                    console.log(i)
+                }
+
+            }
+
+        }
+        fn(10, 20)
+    </script>
+</body>
+
+</html>

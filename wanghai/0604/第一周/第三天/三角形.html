@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 用@叠除三角形
+        // for循环确定行数
+        for (var i = 1; i <= 15; i++) {
+            // 确定空格数 &nbsp;
+            var rest = ''
+            for (var j = 1; j <= 16 - i; j++) {
+                rest += '&nbsp;'
+                console.log(rest)
+            }
+            document.write(rest)
+
+            // 确定每行有几个 @ 符号
+            var ret = ''
+            for (var k = 1; k <= i; k++) {
+                ret += '@'
+
+            }
+            document.write(ret)
+            document.write('<br>')
+
+
+        }
+    </script>
+</body>
+
+</html>

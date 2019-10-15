@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 编写函数，要求传入两个时间节点，能返回两个时间节点之间相差 多少天多少小时多少分钟多少秒
+
+        var time = new Date() //一直刷新在当前时间
+        var time1 = new Date('2010-01-05')
+        time = time.getTime()
+        time1 = time1.getTime()
+            // console.log(time)
+            // console.log(time1)
+            //得出一共相差多少秒
+        var time2 = parseInt((time - time1) / 1000)
+
+        //得出相差多少天
+        var day = parseInt(time2 / 60 / 60 / 24)
+            //得出相差多少小时
+        var hh = time2 - day * 24 * 60 * 60
+        hh = hh / 60 / 60
+
+        //得出相差多少分钟
+        console.log(day, hh)
+
+
+        // var time1 = new Date('2019-01-01 00:00:00')
+        // var time2 = new Date('2019-01-03 04:55:34')
+        // time1 = time1.getTime()
+        // time2 = time2.getTime()
+        // console.log(time1) // 1546272000000
+        // console.log(time2) // 1546462534000
+    </script>
+</body>
+
+</html>

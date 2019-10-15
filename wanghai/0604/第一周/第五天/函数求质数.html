@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // function fn(x) {
+        // for (var i = 3; i < 6; i++) {
+        //     // console.log(i + 'q')
+        //     for (var k = 2; k < 6; k++) {
+        //         // console.log(k)
+        //         // console.log(x % i)
+        //         if (i % k !== 0) {
+        //             console.log(i)
+        //         }
+
+        //     }
+        // }
+
+
+        // }
+        // fn(24)
+
+        // 从 1~100 每一个数字都要经历一次判断
+
+        for (var j = 3; j <= 100; j++) {
+            var flag = true
+            for (var i = 2; i <= j - 1; i++) {
+                if (j % i === 0) {
+                    // 执行到这里，证明你被储了自己和 1 之外的某一个数字整除了
+                    flag = false
+                }
+            }
+            if (flag) {
+                console.log(j)
+            }
+        }
+    </script>
+</body>
+
+</html>

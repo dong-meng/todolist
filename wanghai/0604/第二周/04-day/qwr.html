@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>选择</th>
+            </tr>
+        </thead>
+        <tbody> </tbody>
+    </table>
+
+    <script>
+        var arr = [{
+            name: 'Jack',
+            age: 18,
+            gender: '男',
+            det: '删除'
+        }, {
+            name: 'Rose',
+            age: 20,
+            gender: '女',
+            det1: '删除'
+        }, {
+            name: 'Tom',
+            age: 22,
+            gender: '男',
+            det2: '删除'
+        }, {
+            name: '张三',
+            age: 24,
+            gender: '男',
+            det3: '删除'
+        }]
+        var useTbody = document.getElementsByTagName('tbody')[0]
+        console.log(useTbody)
+
+        bindHtml()
+
+        function bindHtml() {
+            var str = ''
+            for (var i = 0; i < arr.length; i++) {
+                str += '<tr>' + '<td>' + i + '</td>'
+                for (var key in arr[i]) {
+                    var info = arr[i][key]
+                    str += '<td>' + info + '</td>'
+                }
+                str += '<td class="del" >    删除</td>' + '</tr>'
+            }
+            useTbody.innerHTML = str
+
+            var dels = document.querySelectorAll('.del')
+            console.log(dels)
+            for (var i = 0; i < dels.length; i++) {
+                dels[i].onclick = function() {
+                    // 找到我点击的那一个
+                    // this =》 事件源（就是谁身上的事件）
+                    arr.splice(this.getAttribute('index'), 1)
+                    bindHtml()
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

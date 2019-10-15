@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // // 原型继承  （利用原型链）
+        // function Person() {}
+
+        // Person.prototype.satHi = function() {}
+
+        // function Student() {}
+        // // Student.prototype = new Person()
+        // Student.prototype = {
+        //     sayHi: function() {},
+        //     a: function() {}
+        // }
+        // console.log(new Student())
+
+
+        // 借用函数构造体继承  借用继承   call 继承
+        function Person() {
+            this.name = 'jake'
+        } // 父函数
+        Person.prototype.sayHi = function() {
+            console.log('hi')
+        }
+
+
+        class Student {
+            // call 改 this 指向
+            constructor() {
+                Person.call(this)
+            }
+
+        }
+        const p = new Student()
+        console.log(p)
+        var arr = [1, 2, 3, ]
+        console.log(arr)
+
+        // 下面的代码开始继承这个父类的内容
+        // Student.prototype 是一个对象
+        // 每一个函数都天生自带一个属性叫做  prototype，他是一个对象空间
+        // Student.prototype = {
+        //   constructor: Student,
+        //   a: function () {},
+        //   b: function () {}
+        // }
+
+        // const s = new Student()
+
+        /*
+          s 是 Student 这个类的实例化对象
+          s 在使用一些方法的时候，先在自己身上找，自己身上没有就去 __proto__ 上找
+          s.__proto__ === Student.prototype，这个上面还没有，就继续向上查找
+
+          s => Student.prototype => { sayHi: function () {} } => Object.prototype
+        */
+
+        // console.log(s)
+    </script>
+
+
+</body>
+
+</html>

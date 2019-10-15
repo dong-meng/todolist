@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p id="box"></p>
+    <script>
+        // 生成当前时间
+        var time = new Date() //生成时间
+            // 获得时间信息0
+        var year = time.getFullYear()
+        var month = time.getMonth()
+        var day = time.getDate()
+        var hour = time.getHours()
+        var minutes = time.getMinutes()
+        var seconds = time.getSeconds()
+
+        // 格式化时间信息
+        var arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+            // 格式化除年之外的时间信息
+        function fn(x) {
+            var str = ''
+            var a = parseInt(x / 10)
+            var b = x % 10
+            if (x <= 10) {
+                str += arr[x]
+            } else if (x > 10 && x < 20) {
+                str += '十' + arr[b]
+            } else if (x >= 20 && b === 0) {
+                str += arr[a] + '十'
+            } else {
+                str += arr[a] + '十' + arr[b]
+            }
+            return str
+        }
+        console.log(fn(seconds))
+
+        // 格式化年
+        function yea(x) {
+            // 将年份转化为一个字符串
+            var str = String(x)
+                // 准备一个数组接受格式化之后的 年 的数字
+            var arr1 = []
+            for (var i = 0; i < str.length; i++) {
+                var sum = arr[str[i]]
+                arr1.push(sum)
+            }
+            var str1 = arr1.join('')
+            return str1
+        }
+        yea(year)
+
+
+        // 将时间变为汉字显示
+        function fun() {
+            var time = new Date()
+            var year = time.getFullYear()
+            var month = time.getMonth()
+            var day = time.getDate()
+            var hour = time.getHours()
+            var minutes = time.getMinutes()
+            var seconds = time.getSeconds()
+
+            var ymd = yea(year) + '年' + fn(month + 1) + '月' + fn(day) + '日' + ' ' + fn(minutes) + '分' + fn(seconds) + '秒'
+            return ymd
+        }
+        console.log(fun())
+
+
+        // 把这个自动时间在窗口运行
+        setInterval(function() {
+                var rest = fun()
+                box.innerText = rest
+                    // console.log(rest)
+            },
+            1000
+        )
+    </script>
+</body>
+
+</html>

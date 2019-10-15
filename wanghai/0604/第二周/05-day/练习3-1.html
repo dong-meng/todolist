@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现 tab 栏切换功能Document</title>
+    <link rel="stylesheet" id="lin" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        div {
+            width: 800px;
+            height: 600px;
+            margin: 30px auto;
+            border: 10px solid black;
+        }
+        
+        ul {
+            width: 100%;
+            height: 50px;
+            border-bottom: 3px solid black;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        ul>li {
+            width: 200px;
+            height: 100%;
+            background: yellow;
+            border-right: 1px solid yellow;
+            display: flex;
+            justify-content: center;
+            line-height: 50px;
+        }
+        
+        ul>li.COR {
+            background: blue;
+        }
+        
+        ol {
+            width: 100%;
+            height: 550px;
+            position: relative;
+        }
+        
+        ol>li {
+            width: 100%;
+            height: 550px;
+            position: absolute;
+            top: 0;
+            font-size: 100px;
+            background: green;
+            display: none;
+        }
+        
+        div ol>li.bloc {
+            background: green;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class="COR">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <ol>
+            <li class="bloc">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ol>
+    </div>
+
+
+    <script>
+        // 实现 tab 栏切换功能
+        var li = document.querySelectorAll('ul>li')
+        var Hli = document.querySelectorAll('ol>li')
+
+        for (var k = 0; k < li.length; k++) {
+
+            li[k].setAttribute('index', k)
+            li[k].onclick = function() {
+
+                for (var j = 0; j < li.length; j++) {
+                    li[j].className = ''
+                    Hli[j].className = ''
+                }
+                this.className = 'COR'
+
+                var index = this.getAttribute('index')
+
+                Hli[index].className = 'bloc'
+            }
+        }
+    </script>
+</body>
+
+</html>

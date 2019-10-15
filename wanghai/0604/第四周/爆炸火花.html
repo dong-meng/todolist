@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>爆炸火花Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 600px;
+            height: 500px;
+            background: black;
+            opacity: 0.8;
+            border: 10px solid gold;
+            margin: 50px auto;
+            position: relative;
+        }
+        
+        p {
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fir_box"></div>
+
+    <script src="./js/爆炸火花.js"></script>
+    <script>
+        const fir_box = document.querySelector('.fir_box')
+        const fir = new Fire(fir_box)
+    </script>
+</body>
+
+</html>

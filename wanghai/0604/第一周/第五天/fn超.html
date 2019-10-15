@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        function fn(a) {
+            return function(b) {
+                return function(c) {
+                    console.log(a * b * c);
+                }
+            }
+        }
+        fn(2)(3)(4);
+
+
+        //柯里化函数 -> 使用闭包.
+
+        function fun(a, s, d) {
+            console.log(a * s * d)
+        }
+        fun(2, 3, 4)
+    </script>
+</body>
+
+</html>

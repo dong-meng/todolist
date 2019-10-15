@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="year">
+    <input type="text" id="month">
+    <input type="text" id="day">
+    <input type="button" id="btn" value="=">
+    <input type="text" id="rest">
+
+    <script>
+        // 点击 but 要做的事情
+        btn.onclick = function() {
+            // 获取年 月 日
+            var yearNum = year.value - 0
+            var monthNum = month.value - 0
+            var dayNum = day.value - 0
+            var days = 0
+
+            // 月的数组
+            var arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            var x = 0
+                // while 循环语句 获得几月份
+            while (x < monthNum - 1) {
+                days += arr[x]
+                x++
+            }
+
+
+            // 判断语句 if 
+            // 当是闰年时
+            if (yearNum % 4 === 0 && yearNum % 100 !== 0 || yearNum % 400 === 0 && monthNum > 2) {
+                var D = days + dayNum + 1
+            }
+            // 当是非闰年时
+            else {
+                var D = days + dayNum
+            }
+            // 输出结果
+            rest.value = D
+        }
+    </script>
+</body>
+
+</html>

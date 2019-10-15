@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        async function fn() {
+            const res = new Promise(function(resolve, reject) {
+                ajax({
+                    url: '第一个地址',
+                    success(res) {
+                        resolve(res)
+                    }
+                })
+            })
+
+            // res 就可以得到请求的结果
+            const res2 = new Promise(function(resolve, reject) {
+                ajax({
+                    url: '第二个地址',
+                    data: {
+                        a: res.a,
+                        b: res.b
+                    },
+                    success(res) {
+                        resolve(res)
+                    }
+                })
+            })
+
+            const res3 = new Promise(function(resolve, reject) {
+                ajax({
+                    url: '第三个地址',
+                    data: {
+                        a: res2.a,
+                        b: res2.b
+                    },
+                    success(res) {
+                        resolve(res)
+                    }
+                })
+            })
+
+            // res3 就是我们要的结果
+            console.log(res3)
+        }
+    </script>
+</body>
+
+</html>

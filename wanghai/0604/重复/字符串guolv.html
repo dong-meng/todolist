@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //字符串过滤
+        var str = 'asdwersfdstdfdhftHHsadasfHHsdgeHHKJMKHHOUHIYFGHHGFDTRIHHmefijHHASDQW'
+            // for (var i = 1; i <= str.length; i++) {
+            //     str = str.replace('HH', '**')
+            // }
+            // console.log(str)
+
+
+        // var res = str.split('HH').join('**')
+        // console.log(res)
+
+
+
+        while (str.indexOf('H') !== -1) {
+            str = str.replace('H', '**')
+        }
+        console.log(str)
+    </script>
+
+</body>
+
+</html>

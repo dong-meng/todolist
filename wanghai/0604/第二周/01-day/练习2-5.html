@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+        var has = [30, 40, 80, 60, 5]
+
+        function fn(arr, x) {
+            // 假设有这个数字 
+            var flag = false
+            for (var i = 0; i < 5; i++) {
+                if (arr[i] === 60) {
+                    flag = true
+                    break
+                }
+            }
+            return flag
+        }
+        var res = fn(has, 60)
+        console.log(res)
+    </script>
+
+</body>
+
+</html>

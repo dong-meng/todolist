@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 100--200之间的质数 只能被 1 和它本身整除
+        var cont = 0
+        var q
+        var w
+        var e
+        var r
+        var t
+        for (var x = 1; x <= 99999; x++) {
+            q = parseInt(x / 10000) /* 万位数取整   得万位数*/
+            w = parseInt(x / 1000) /* 千位数除1000 ，先取小数点前整数 */
+            w = (w % 10) /* 再除10  然后取余数。得千位数字 */
+            e = parseInt(x / 100) /* 除100 取整，得 百 千 万三个数字 */
+            e = (e % 10) /* 再除 10 取余数  得百位数的数字 */
+            r = parseInt(x / 10) /* 除100 取余数，得 个位 和 十位数两个个数字 */
+            r = parseInt(r % 10) /* 得十位数 */
+            t = x % 10
+            if (x > 9999 && x === q * q * q * q * q + w * w * w * w * w + e * e * e * e * e + r * r * r * r * r + t * t * t * t * t) {
+                console.log(x + 'q')
+
+                // if (x > 999 && x <= 9999 && x === q * q * q * q + w * w * w * w + e * e * e * e + r * r * r * r + t * t * t * t) {
+                //     console.log(x + 'w')
+
+
+                //     if (x === q * q * q + w * w * w + e * e * e + r * r * r + t * t * t) {
+                //         console.log(x + 'e')
+                //     }
+                // }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

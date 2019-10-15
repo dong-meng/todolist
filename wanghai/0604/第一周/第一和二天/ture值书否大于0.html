@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  -->
+    <input type="text" id="first" value="">
+    <input type="text" value="0">
+    <input type="button" id="but" value="判断">
+    <input type="text" id="res" value="">
+
+    <script>
+        but.onclick = function() {
+            var firstNum = first.value
+                // console.log(firstNum)
+            var firstNum = parseFloat(firstNum)
+            var rest
+            if (firstNum > 0) {
+                rest = '此值大于0'
+                    // document.getElementById('res').value = rest;
+                    // console.log('此值大于0')
+            } else if (firstNum == 0) {
+                rest = '此值等于0'
+            } else {
+                rest = '此值小于0'
+            }
+            res.value = rest
+        }
+
+
+
+
+
+        /*      var height = 180
+             var weight = 130
+
+             var res = (height - 108) * 2
+
+             if (weight <= res + 10 && weight >= res - 10) {
+                 console.log('合格')
+             } else {
+                 console.log('buhege')
+             } */
+    </script>
+</body>
+
+</html>

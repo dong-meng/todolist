@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //   编写函数，判断一个字符串是否是 “可回文字符串”
+        // - 可回文字符串： 正着和反着一样
+        // - 例如： abcba / 你好世界世好你 
+        // - 返回值是布尔值
+
+
+
+        function fn() {
+            var arr = [1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1]
+                // 假设他是一个可回文字符串
+            var flag = true
+            for (var i = 0; i <= arr.length; i++) {
+                if (arr.length % 2 !== 0 && arr[i] !== arr[arr.length - 1 - i]) {
+                    flag = false
+                    break
+                }
+            }
+            return flag
+        }
+        fn()
+        console.log(fn())
+            // 0 = n - 1
+            // 1 = n - 2
+            // 2 = n - 3
+            // 3 = n - 4
+            // 4 = n - 5
+            // .
+            // .
+            // .
+            // .
+            /*      var arr = [1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1]
+                 for (var k = 1; k <= arr.length; k++) {
+                     if (arr.length % 2 === 0 && arr[k] !== arr[arr.length - 1 - k]) {
+                         break
+                     } else {
+
+                     }
+                 } */
+    </script>
+</body>
+
+</html>

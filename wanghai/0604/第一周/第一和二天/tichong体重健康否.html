@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="first" value="身高：">
+    <input type="text" id="second" value="体重：">
+    <input type="button" id="but" value="判断">
+    <input type="text" id="rest">
+    <script>
+        but.onclick = function() {
+            var height = first.value - 0
+            var width = second.value - 0
+            var res
+            var body = (height - 108) * 2
+            var body1 = body - width
+            if (body1 >= -10 && body1 <= 10) {
+                // console.log('正常')
+                res = ('正常')
+            } else {
+                // console.log('不正常')
+                res = ('不正常')
+            }
+            rest.value = res
+        }
+    </script>
+</body>
+
+</html>

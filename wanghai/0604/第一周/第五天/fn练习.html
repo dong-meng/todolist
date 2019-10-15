@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // argument
+        for (var x = 1; x < 10; x++) {
+
+            if (x < 5) {
+                // console.log(2 * x + '==')
+
+                function fn(x) {
+                    console.log(2 * x)
+                }
+                fn(x)
+                var a = 0
+                var s
+                s = Number(fn(x))
+                console.log(s + '你')
+                a += s
+            }
+            console.log(a)
+
+
+            // function fun(x) {
+            //     console.log(2 * x + '++')
+            // }
+        }
+
+        // fun(x)
+        // fn(x)(y)
+        // fn(fun(fn(x)))
+    </script>
+
+</body>
+
+</html>

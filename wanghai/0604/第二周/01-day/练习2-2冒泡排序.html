@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // -先遍历数组，让挨着的两个进行比较，如果前一个比后一个大，那么就把两个换个位置
+        //  数组遍历一遍以后，那么最后一个数字就是最大的那个了
+        //  然后进行第二遍的遍历，还是按照之前的规则，第二大的数字就会跑到倒数第二的位置
+        //  以此类推，最后就会按照顺序把数组排好了
+
+
+        //  设一个数组  
+        // v假设arr[0]最小
+        // var tmp
+        var arr = [5, 2, 4, 9, 3, 7, 12, 23, 65, 98, 78, 90, 8, 1, 89]
+            // 循环多少次 多长就多少次。
+        for (var k = 0; k < arr.length - 1; k++) {
+            // 比较多少次，有多少个就比较多少次
+            for (var i = 0; i < arr.length - 1 - k; i++) {
+                if (arr[i] < arr[i + 1]) {
+                    // 交换一次
+                    var tmp = arr[i]
+                    arr[i] = arr[i + 1]
+                    arr[i + 1] = tmp
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+
+</html>

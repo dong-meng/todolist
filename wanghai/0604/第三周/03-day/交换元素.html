@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        ul {
+            width: 640px;
+            height: 640px;
+            border: 10px solid pink;
+            border-radius: 10px;
+            margin: 30px auto;
+            position: relative;
+        }
+        
+        li {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 10px;
+            display: flex;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li style="top: 10px; left: 10px;">1</li>
+        <li style="top: 10px; left: 220px;">2</li>
+        <li style="top: 10px; left: 430px;">3</li>
+        <li style="top: 220px; left: 10px;">4</li>
+        <li style="top: 220px; left: 220px;">5</li>
+        <li style="top: 220px; left: 430px;">6</li>
+        <li style="top: 430px; left: 10px;">7</li>
+        <li style="top: 430px; left: 220px;">8</li>
+        <li style="top: 430px; left: 430px;">9</li>
+    </ul>
+
+
+    <script>
+        /*           第一个事件
+                              应该让每一个 li 不能被选中状态
+                              selectstart 选中开始
+                            第二个事情
+                              绑定那些事件
+                              mousedown
+                                mousemove
+                                mouseup
+                                mouseout
+                            第三个事情
+                              先动起来
+                              3-1. 按下去的时候记录坐标点
+                              3-2. 移动的时候记录坐标点
+                              3-3. 鼠标抬起来的时候，取消 mousemove 事件
+                              3-4. 边界值判断
+                              3-5. 如果你的光标抬起来了
+                                  - 你的 mouseout 事件还有没有意义
+                                   如果你的光标脱手了
+                                  - 你的 mouseup 事件还有没有意义
+                              3-6. 脱手以后的事情
+                                  - 在按下的时候记录一下
+                            第四个事情
+                              鼠标抬起来以后交换位置
+                              4-1. 先判断和谁有接触
+                                  - 用我自己的 offsetLeft 也和每一个元素的 offsetLeft 进行运算和盒子的宽度进行比较
+                              4-2.  判断和谁接触面积大
+                                  - 循环 touchArr 就可以了
+                                  - 自己的盒子的宽度 - Math.abs(自己的 offsetLeft - item.offsetLeft)
+                              4-3.  交换两个元素的位置
+                          */
+
+        var ul = document.querySelector('ul')
+        var lis = document.querySelectorAll('li')
+
+        var ulWidth = ul.clientWidth
+        var ulHeight = ul.clientHeight
+
+        addColor()
+        bindEvent()
+
+        var startX, startY
+        var moveX, moveY
+        var startLeft, startTop
+
+        function bindEvent() {
+            lis.forEach(function(item) {
+
+                item.addEventListener('mousedown', function(e) {
+                    e = e || window.event
+
+                    startX = e.clientX - this.offsetLeft
+                    startY = e.clientY - this.offsetTop
+
+                    startLeft = this.offsetLeft
+                    startTop = this.offsetTop
+
+                    this.style.transition = 'none'
+
+                    this.addEventListener('mousemove', move)
+                    this.addEventListener('mouseout', out)
+                    this.addEventListener('mouseup', up)
+                })
+
+
+                item.addEventListener('selectstart', function(e) {
+                    e = e || window.event
+                    e.preventDefault()
+                })
+            })
+        }
+
+        function move(e) {
+            e = e || window.event
+
+            moveX = e.clientX - startX
+            moveY = e.clientY - startY
+
+            if (moveX <= 0) {
+                moveX = 0
+            }
+
+            if (moveY <= 0) {
+                moveY = 0
+            }
+
+            if (moveX + this.clientWidth >= ulWidth) {
+                moveX = ulWidth - this.clientWidth
+            }
+
+            if (moveY + this.clientHeight >= ulHeight) {
+                moveY = ulHeight - this.clientHeight
+            }
+
+
+            this.style.left = moveX + 'px'
+            this.style.top = moveY + 'px'
+            this.style.zIndex = 10
+        }
+
+        // up 是事件处理函数 this =》 事件源没有问题
+        function up(e) {
+            e = e || window.event
+            var _this = this
+            var touchArr = []
+
+            // 循环遍历是为了找到和谁接触
+            lis.forEach(function(item) {
+                if (item !== _this) {
+                    if (
+                        Math.abs(_this.offsetLeft - item.offsetLeft) <= _this.clientWidth &&
+                        Math.abs(_this.offsetTop - item.offsetTop) <= _this.clientHeight
+                    ) {
+                        touchArr.push(item)
+                    }
+                }
+            })
+
+            // 循环结束
+            // console.log(touchArr)
+
+            // 定义一个变量保存面积
+            // 定义一个变量保存元素
+            var maxArea = 0
+            var areaEle = null
+
+            // 遍历 touchArr
+            touchArr.forEach(function(item) {
+                var x = _this.clientWidth - Math.abs(_this.offsetLeft - item.offsetLeft)
+                var y = _this.clientHeight - Math.abs(_this.offsetTop - item.offsetTop)
+                    // console.log(item, x, y, x * y)
+
+                // 就是要找到最大的哪个元素
+                // 如果你的面积比我的 maxArea 还要大
+                if (x * y > maxArea) {
+                    maxArea = x * y
+                    areaEle = item
+                }
+            })
+
+            // 如果没有接触的元素
+            // 后面的代码会报错
+            // if (areaEle === null) {
+            //   console.log('没有接触的元素')
+            //   // out 执行是可以执行的
+            //   // 但是 out 函数内部的 this 就会有问题
+            //   // 本身 out 作为事件处理函数执行,this 指向 拖拽元素的
+            //   // 现在我直接执行 out 函数,里面的 this 指向 window
+
+            //   // js 里面有一个东西 call
+            //   // 专门用来改变 this 指向的
+            //   // 不管你本身 this 指向哪里
+            //   // 写了 call 以后,就按照我的来
+            //   // 语法: 函数名.call(你要改变的this指向)
+
+            //   // 这里的 this 还是拖拽的元素
+            //   // 是让你函数执行的时候,函数内部的 this 强行指向我传递的第一个参数
+            //   out.call(this)
+            //   return
+            // }
+
+
+            if (areaEle === null) {
+                this.style.transition = 'all .5s linear'
+                this.style.left = startLeft + 'px'
+                this.style.top = startTop + 'px'
+                this.style.zIndex = 1
+            } else {
+                // 我找到的哪个接触面积最大的元素
+                this.style.transition = 'all .5s linear'
+                areaEle.style.transition = 'all .5s linear'
+                this.style.left = areaEle.offsetLeft + 'px'
+                this.style.top = areaEle.offsetTop + 'px'
+                areaEle.style.left = startLeft + 'px'
+                areaEle.style.top = startTop + 'px'
+                this.style.zIndex = 1
+            }
+
+            this.removeEventListener('mousemove', move)
+            this.removeEventListener('mouseout', out)
+        }
+
+        function out() {
+            console.log(this)
+            this.removeEventListener('mousemove', move)
+            this.removeEventListener('mouseout', out)
+            this.removeEventListener('mouseup', up)
+
+            this.style.transition = 'all .5s linear'
+            this.style.left = startLeft + 'px'
+            this.style.top = startTop + 'px'
+            this.style.zIndex = 1
+        }
+
+        function addColor() {
+            var arr = ['yellow', 'blue', 'red', 'pink', 'purple', 'orange', 'hotpink', 'green', 'skyblue']
+            lis.forEach(function(item, index) {
+                item.style.backgroundColor = arr[index]
+            })
+        }
+    </script>
+</body>
+
+</html>

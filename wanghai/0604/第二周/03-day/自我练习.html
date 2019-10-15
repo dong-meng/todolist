@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var time = new Date()
+        console.log(time)
+        var year = time.getFullYear()
+        var month = time.getMonth()
+        var day = time.getDate()
+        var hour = time.getHours()
+        var minutes = time.getMinutes()
+        var seconds = time.getSeconds()
+        var week = time.getDay()
+        console.log(time.getTime()) //当前时间离格林威治时间有多久（毫秒）
+
+        console.log(year, month, day, hour, minutes, seconds, week)
+    </script>
+</body>
+
+</html>

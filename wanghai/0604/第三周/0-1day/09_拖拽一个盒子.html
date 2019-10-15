@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    // 鼠标在哪里，盒子就应该在哪里
+
+    var div = document.querySelector('div')
+
+    /*
+      至少需要三个事件
+        mousedown
+        mousemove
+        mouseup
+
+      三个事件之间有没有什么关系
+    */
+
+    div.onmousedown = function () {
+
+      div.onmousemove = function (e) {
+        e = e || window.event
+
+        // 鼠标的坐标点信息
+        // clientX
+        // clientY
+        var x = e.clientX
+        var y = e.clientY
+
+        // 让你的位置给我的光标留下点余地
+        this.style.left = x - 50 + 'px'
+        this.style.top = y - 50 + 'px'
+      }
+    }
+
+    div.onmouseup = function () {
+      // 鼠标抬起来的时候
+      // 取消 mousemove 事件的执行函数
+      div.onmousemove = null
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态显示鼠标光标信息Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background: pink;
+            border: 5px solid gray;
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="text" name="" id="first">
+    <input type="text" name="" id="second">
+    <div class="move"></div>
+
+    <SCript>
+        var div = document.querySelector('div')
+        div.onclick = function() {
+                console.log('div被电力了')
+                console.log(window.event)
+            }
+            // 鼠标按下函数
+        div.onmousedown = function() {
+                // 鼠标移动函数 
+                div.onmousemove = function(e) {
+                    e = e || window
+                    var H = window.getComputedStyle(this).height // 100px * 2
+                    var W = window.getComputedStyle(div).width //==>获得值  带有“px”
+                    var x = e.clientX - this.clientWidth / 2 //注意
+                    var y = e.clientY - this.clientHeight / 2 //注意
+
+                    first.value = x
+                    second.value = y
+                }
+            }
+            // 鼠标抬起函数 
+        div.onmouseup = function() {
+            div.onmousemove = null
+        }
+    </SCript>
+</body>
+
+</html>

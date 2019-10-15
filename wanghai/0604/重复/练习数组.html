@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 创建数组
+        var arr = []
+        var arr = new Array()
+            // 添加成员
+        arr.push() //最后
+        arr.unshift() //最前
+            // 删除成员
+        arr.pop() //删除最后
+        arr.shift() //删除最前
+        delete arr[k] //删除 arr 中的第 k 项。k项位置留下 empty
+        arr.reverse() // 反转数组
+        arr.splice('开始位', '截多少', '替换元素') // 截取数组
+            // 查看数组   （遍历数组）
+        arr.indexOf() //遍历数组
+            // 以上为数组的增删改查 
+
+
+        // 数组排序
+        arr.sort()
+        arr.sort(function(a, b) {
+            return a - b
+        })
+        arr.concat() // 数组拼接
+        str = arr.join() // 数组转换为字符串
+            // 查找数组内容
+
+        arr.indexOf('项') //==>返回值为索引值  根据项找索引值
+        arr.forEach(function(item, index, arr) {
+                // item 就是数组中的每一项
+                // index 就是数组的索引
+                // arr 就是原始数组
+                '操作代码'
+            }) //console.log('数组的第 ' + index + ' 项的值是 ' + item + '，原始数组是', arr)
+        arr.map(function(item, index, arr) {
+                '操作代码'
+            }) //遍历数组，并对每项都可进行操作
+        arr.filter(function(item, index, arr) {
+                '条件代码'
+            }) //按条件筛选数组内容
+    </script>
+</body>
+
+</html>

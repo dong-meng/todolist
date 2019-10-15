@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="first">
+        <select name="" id="selection">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="second">
+
+        <select name="" id="selection1">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="third">
+
+        <input type="button" id="sub" value="=">
+        <input type="text" id="rset" value="">
+    </form>
+
+    <script>
+        // 可以获取到 first 的 value 值
+        // var firstNum = first.value
+        // console.log(firstNum)
+
+        // 在点击 = 的时候获取
+        // 当我点击 = 的时候要做一些事情
+        sub.onclick = function() {
+            var firstNum = first.value
+            var secondNum = second.value
+            var thirdNum = third.value
+                /* var fourthNum = fourth.value */
+
+
+            firstNum = parseFloat(firstNum)
+            secondNum = parseFloat(secondNum)
+            thirdNum = parseFloat(thirdNum)
+                /*  fourthNum = parseFloat(fourthNum) */
+
+            var select = selection.value
+            var select1 = selection1.value
+            var result = 0
+                /* 同加减  同乘除 */
+            if (select == '+' && select1 == '+') {
+                result = firstNum + secondNum + thirdNum
+            } else if (select == '-' && select1 == '-') {
+                result = firstNum - secondNum - thirdNum
+            } else if (select == '*' && select1 == '*') {
+                result = firstNum * secondNum * thirdNum
+            } else if (select == '/' && select1 == '/') {
+                result = firstNum / secondNum / thirdNum
+            }
+            /* 异加减  异乘除 */
+            if (select == '-' && select1 == '+') {
+                result = firstNum - secondNum + thirdNum
+            } else if (select == '+' && select1 == '-') {
+                result = firstNum + secondNum - thirdNum
+            } else if (select == '*' && select1 == '/') {
+                result = firstNum * secondNum / thirdNum
+            } else if (select == '/' && select1 == '*') {
+                result = firstNum / secondNum * thirdNum
+            }
+            /* 加+乘除  减+乘除 */
+            if (select == '-' && select1 == '*') {
+                result = firstNum - secondNum * thirdNum
+            } else if (select == '+' && select1 == '*') {
+                result = firstNum + secondNum * thirdNum
+            } else if (select == '-' && select1 == '/') {
+                result = firstNum - secondNum / thirdNum
+            } else if (select == '+' && select1 == '/') {
+                result = firstNum + secondNum / thirdNum
+            }
+            /* 乘+加减 除+加减 */
+            if (select == '*' && select1 == '+') {
+                result = firstNum * secondNum + thirdNum
+            } else if (select == '/' && select1 == '+') {
+                result = firstNum / secondNum + thirdNum
+            } else if (select == '*' && select1 == '-') {
+                result = firstNum * secondNum - thirdNum
+            } else if (select == '/' && select1 == '-') {
+                result = firstNum / secondNum - thirdNum
+            }
+
+
+
+            /* if (select2 == '+') {
+                result2 = thirdNum + fourthNum
+            } else if (select2 == '-') {
+                result2 = thirdNum - fourthNum
+            } else if (select2 == '*') {
+                result2 = thirdNum * fourthNum
+            } else if (select2 == '/') {
+                result2 = thirdNum / fourthNum
+            } * / */
+            rset.value = result
+                // var Jia = jia.value
+                // var sub = firstNum + secondNum
+                // console.log(sub)
+                // rset.value = sub
+
+
+            // var Jian = jian.value
+            // var sub = firstNum - secondNum
+            // console.log(sub)
+            // rset.value = sub
+
+
+
+        }
+    </script>
+
+
+</body>
+
+</html>

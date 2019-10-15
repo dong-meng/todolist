@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        function fn(x, y, z) {
+            // 利用函数判断数字的大小 并排序 arguments.length
+            // arguments 是一伪数组
+            var max = arguments[0] /* 假设max为最大值 */
+            var min = arguments[0] /* 假设min为最小值 */
+            var mid = arguments[0] /* 假设为中间值 */
+            for (var i = 1; i <= arguments.length; i++) {
+                if (arguments[i] > max) {
+                    max = arguments[i]
+                    console.log(max)
+                }
+                if (arguments[i] < min) {
+                    min = arguments[i]
+                    console.log(min)
+                } else {
+
+                }
+
+            }
+
+        }
+        fn(6, 8, 2)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伦国图Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 500px;
+            height: 505px;
+            border: 3px solid blue;
+            margin: 10px auto;
+            position: relative;
+            box-sizing: border-box;
+        }
+        
+        #left {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            background: blue;
+            display: none;
+            z-Index: 1000
+        }
+        
+        #right {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: 200px;
+            background: blue;
+            display: none;
+            z-Index: 1000
+        }
+        
+        ul,
+        ul>li {
+            width: 100%;
+            height: 400px;
+            list-style: none;
+            position: relative;
+            box-sizing: border-box;
+        }
+        
+        ul>li {
+            position: absolute;
+        }
+        
+        ol {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            display: flex;
+            border-top: 10px solid black;
+            box-sizing: border-box;
+        }
+        
+        ol>li {
+            width: 100px;
+            height: 100%;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class="non"><img src="./img/1.jpg" alt=""></li>
+            <li class="non"><img src="./img/2.jpg" alt=""></li>
+            <li class="non"><img src="./img/3.jpg" alt=""></li>
+            <li class="non"><img src="./img/4.jpg" alt=""></li>
+            <li class="non"><img src="./img/5.jpg" alt=""></li>
+            <div id="right"></div>
+            <div id="left"></div>
+        </ul>
+        <ol>
+            <li idx="0"><img src="./img/1.jpg" alt=""></li>
+            <li idx="1"><img src="./img/2.jpg" alt=""></li>
+            <li idx="2"><img src="./img/3.jpg" alt=""></li>
+            <li idx="3"><img src="./img/4.jpg" alt=""></li>
+            <li idx="4"><img src="./img/5.jpg" alt=""></li>
+        </ol>
+
+    </div>
+
+    <script src="./js/伦国图.js"></script>
+</body>
+
+</html>

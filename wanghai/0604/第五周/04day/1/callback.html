@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="../js/utils.js"></script>
+
+    <script>
+        // 回调地域
+        ajax({
+            // 第一个ajax
+            url: './data.php',
+            dataType: 'json',
+            success(res) {
+                // 响应函数下 加 ajax
+                console.log(res)
+
+                ajax({
+                    // 第二个ajax
+                    url: './data2.php',
+                    data: {
+                        a: res.a,
+                        b: res.b
+                    },
+                    dataType: 'json',
+                    success(res2) {
+                        // 第二个 ajax 的响应函数下 加 ajax
+                        // console.log(res2)
+
+                        ajax({
+                            // 第三个 ajax
+                            url: './data3.php',
+                            data: {
+                                res: res2.res,
+                                type: res2.type
+                            },
+                            dataType: 'json',
+                            success(res3) {
+                                // 第三个 ajax 的响应函数
+                                console.log(res3)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    </script>
+
+</body>
+
+</html>

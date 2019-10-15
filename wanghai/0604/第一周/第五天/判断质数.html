@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // var k = 31
+
+        for (var k = 3; k <= 200; k++) {
+            var flag = true
+                // 判断质数：只能被自己和 1 整除
+            for (var i = 2; i <= k - 1; i++) {
+                // 假设这个数是质数 
+
+                if (k % i === 0) {
+                    flag = false
+                }
+            }
+            if (flag) {
+                console.log(k + '是质数')
+            }
+            /* else {
+                           console.log('不是质数')
+                       }*/
+        }
+    </script>
+</body>
+
+</html> 5

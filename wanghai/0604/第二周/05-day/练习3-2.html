@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机切换图片Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid gray;
+            margin: 50px auto;
+            /* background: url(img/1.jpg) no-repeat; */
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="a">
+        <p>舔我</p>
+    </div>
+
+    <script>
+        // 准备几个图片，实现点击按钮随机将一个盒子的背景随机切换到几个图片中的一个
+        var p = document.querySelector('p')
+        var div = document.querySelectorAll('div')
+
+        function fn() {
+            var k = parseInt(Math.random() * 4)
+            var url = 'url(img/' + k + '.jpg)'
+            console.log(url)
+            return url
+
+        }
+        fn()
+        p.onclick = function() {
+            document.getElementById('a').style.background = fn() + 'no-repeat'
+        }
+        console.log(div)
+    </script>
+</body>
+
+</html>

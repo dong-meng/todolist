@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+
+    <script>
+        var div = document.querySelector('div')
+
+        div.onmousedown = function() {
+
+            div.onmousemove = function(e) {
+                e = e || window.event
+
+                // 我在获取坐标的时候就 减去了一个 盒子的一半
+                var x = e.clientX - 50
+                var y = e.clientY - 50
+
+                // 左边不出界
+                if (x <= 0) {
+                    x = 0
+                }
+
+                // 上边不出界
+                if (y <= 0) {
+                    y = 0
+                }
+
+                // 右侧的极限值就是 left 值 + 盒子的宽度 >= 屏幕的宽度
+                // console.log(this.offsetLeft) // 盒子左边的偏移量
+                // console.log(this.clientWidth) // 盒子的宽度
+                var maxWidth = document.documentElement.clientWidth
+                var maxHeight = document.documentElement.clientHeight
+                console.log(maxWidth)
+
+                if (x + this.clientWidth >= maxWidth) {
+                    x = maxWidth - this.clientWidth
+                }
+
+                if (y + this.clientHeight >= maxHeight) {
+                    y = maxHeight - this.clientHeight
+                }
+
+                if (this.offsetLeft + this.clientWidth >= maxWidth) {
+                    x = maxWidth - this.clientWidth
+                }
+
+                if (this.offsetTop + this.clientHeight >= maxHeight) {
+                    y = maxHeight - this.clientHeight
+                }
+
+                console.log(x, y)
+
+                this.style.left = x + 'px'
+                this.style.top = y + 'px'
+            }
+        }
+
+        div.onmouseup = function() {
+            div.onmousemove = null
+        }
+    </script>
+</body>
+
+</html>

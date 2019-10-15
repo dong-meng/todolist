@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 1000px;
+      height: 1600px;
+      background-color: pink;
+      overflow: hidden;
+    }
+
+    li {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      margin: 20px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+
+  <script>
+    var ul = document.querySelector('ul')
+    var lis = document.querySelectorAll('li')
+
+    // 获取了 4 个 li 元素
+    // 给 4 个 li 添加了点击事件
+    // for (var i = 0; i < lis.length; i++) {
+    //   lis[i].onclick = function () {
+    //     console.log('我被点击了')
+    //   }
+    // }
+
+
+    // 给 ul 注册了一个点击事件
+    // 当我点击 li 的时候
+    //   会触发 li 的点击事件（因为没有东西，什么也不做）
+    //   会触发 ul 的点击事件
+
+    // 我把向注册再 li 身上的事件，注册在了结构父级上
+    // target 是准确点击的目标
+    ul.addEventListener('click', function (e) {
+      e = e || window.event
+
+      if (e.target.nodeName === 'UL') {
+        // 动态加入的这个元素没有点击事件的
+        var li = document.createElement('li')
+        li.innerText = '我是动态创建的'
+        ul.appendChild(li)
+      }
+
+      if (e.target.nodeName === 'LI') {
+        console.log('你点击的是 li')
+      }
+    })
+
+    // 为什么要用事件委托
+    // 当我们动态操作元素的时候，需要使用
+
+    /*
+      什么是事件委托
+        - 就是把我要做的事情委托给我的传播路径中的某一个父级
+        - 通过 e.target 来判断是不是准确的点击再了我的身上
+        - 通过 if 条件判断了执行本来我想注册的事件
+    */
+
+    /*
+      动态创建表格
+        述责的 length === 3
+        删除以后，数组的length === 2
+        从新渲染，从新绑定的事件
+        可以使用事件委托来做事情
+    */
+
+
+  </script>
+
+
+</body>
+</html>

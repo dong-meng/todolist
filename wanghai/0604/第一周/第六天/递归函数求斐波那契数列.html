@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 利用递归求斐波那契数列
+        // - 斐波那契数列 : 1 1 2 3 5 8 13 21 34
+        // - 第一个数字和第二个数字是 1 每三个数字开始，每个数字是前两个数字的和
+        // - 写一个函数，传入 5，输出 斐波那契数列 第五位的数字是多少
+
+
+        function fn(x) {
+            var rest
+            if (x === 1 || x === 2) {
+                return 1
+            }
+            return fn(x - 1) + fn(x - 2)
+        }
+        console.log(fn(9))
+    </script>
+</body>
+
+</html>

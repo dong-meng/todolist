@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // fn函数
+        function fn(n) {
+            // for 判断一个从1--n 之间的数
+            for (var q = 1; q <= n; q++) {
+                // 判断这个数是否为偶数
+                // 假设这个数是偶数
+                var flag = true
+                if (q % 2 !== 0) {
+                    // console.log(q)
+                    flag = false
+                } else {
+                    // console.log(q)
+                }
+            }
+            // 当flag为 ture 时  输出为偶数
+            // 当flag为false时  输出为奇数
+            return flag
+        }
+        console.log(fn(5))
+
+
+        // fun函数   并且调用fn 函数
+        function fun(x, y) {
+            var he = 0
+            var cha = 0
+            for (var w = x; w <= y; w++) {
+                if (fn(w)) {
+                    // console.log(w)
+                    he += (1 / w)
+                        // console.log(he + '和')
+                } else {
+                    cha += (1 / w)
+                        // console.log(cha + '差')
+                }
+            }
+            console.log(he + '和')
+            console.log(cha + '差')
+        }
+        console.log(fun(5, 12))
+    </script>
+</body>
+
+</html>

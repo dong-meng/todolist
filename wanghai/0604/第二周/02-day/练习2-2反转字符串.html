@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // 反转字符串  var str = 'abcdefg'
+        var str = 'abcdefg'
+            // 字符串变为数组  arr
+        var arr = []
+        for (var i = 0; i < str.length; i++) {
+            arr.push(str[i])
+        }
+        console.log(arr)
+
+        // 反转数组内容
+        var arr2 = arr.reverse()
+        console.log(arr2)
+            // 将数组转换为字符串
+        var str = arr2.join('')
+        console.log(str)
+    </script>
+</body>
+
+</html>

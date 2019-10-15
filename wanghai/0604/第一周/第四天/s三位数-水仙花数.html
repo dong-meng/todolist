@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>三位数的水仙花数</h2>
+
+    <script>
+        for (var x = 1; x <= 999; x++) {
+            var q
+            var w
+            var i
+            var y
+            var k
+            q = parseInt(x / 10000) /* 万位数取整 */
+                // w 为千位数
+            w = parseInt(x / 1000) /* 千位数除1000 ，先取小数点前整数 */
+            w = (w % 10) /* 再除10  然后取余数。得千位数字 */
+            i = parseInt(x / 100) /* 除100 取整，得 百 千 万三个数字 */
+            i = (i % 10) /* 再除 10 取余数  得百位数的数字 */
+            y = parseInt(x % 100) /* 除100 取余数，得 个位 和 十位数两个个数字 */
+            y = parseInt(y / 10)
+                /* 再除 10 取整数  得十位数的
+                           
+                           数字 */
+            k = x % 10 /* 除 10 取余数 获得个位数的数字 */
+                // console.log(q + '万位')
+                // console.log(w + '千位')
+                // console.log(i + '百位')
+                // console.log(y + '十位')
+                // console.log(k + '个位')
+            if (x === q * q * q + w * w * w + i * i * i + y * y * y + k * k * k) {
+                console.log(x)
+                    // 档 x 大于 300 时  停止循环 x 
+                    // if (x > 300) {
+                    //     break
+                    // }
+                document.write(x + ' ')
+
+            }
+
+
+            /* else {
+                           console.log(x)
+                       } */
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>委托书写表格（有一个删除功能）Document</title>
+
+    <style>
+        table {
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>选择</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+        var arr = [{
+                name: 'Jack',
+                age: 18,
+                gender: '男',
+            }, {
+                name: 'Rose',
+                age: 20,
+                gender: '女',
+            }, {
+                name: 'Tom',
+                age: 22,
+                gender: '男',
+            }]
+            // 使用事件委托来书写表格（有一个删除功能）
+        var tBody = document.querySelector('tbody')
+
+        fun()
+
+        function fun() {
+            var str = ''
+                // 生成一个表格
+            for (var k = 0; k < arr.length; k++) {
+                str += '<tr>'
+                for (var key in arr[k]) { //arr[k]也就是obj
+                    str += '<td>'
+                    str += arr[k][key]
+                    str += '</td>'
+                }
+                str += '<td class="del" idx="' + k + '">删除</td>'
+                str += '</tr>'
+            }
+            tBody.innerHTML = str
+                // 用委托函数删除操作
+            tBody.addEventListener('click', function(e) {
+                e = e || window.event
+                var target = e.target || e.srcElement
+
+                if (e.target.className === 'del') {
+                    var idx = e.target.getAttribute('idx')
+                    console.log(idx)
+                    arr.splice(idx, 1)
+                    fun()
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

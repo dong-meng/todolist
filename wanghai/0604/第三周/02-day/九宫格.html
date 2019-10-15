@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        ul {
+            width: 640px;
+            height: 640px;
+            border: 10px solid pink;
+            border-radius: 10px;
+            margin: 30px auto;
+            position: relative;
+        }
+        
+        li {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 10px;
+            display: flex;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li style="top: 10px; left: 10px;">1</li>
+        <li style="top: 10px; left: 220px;">2</li>
+        <li style="top: 10px; left: 430px;">3</li>
+        <li style="top: 220px; left: 10px;">4</li>
+        <li style="top: 220px; left: 220px;">5</li>
+        <li style="top: 220px; left: 430px;">6</li>
+        <li style="top: 430px; left: 10px;">7</li>
+        <li style="top: 430px; left: 220px;">8</li>
+        <li style="top: 430px; left: 430px;">9</li>
+    </ul>
+
+
+    <script>
+        var ul = document.querySelector('ul')
+        var lis = document.querySelectorAll('li')
+            /*
+                第一个事件
+                  应该让每一个 li 不能被选中状态
+                  selectstart 选中开始
+                第二个事情
+                  绑定那些事件
+                  mousedown
+                    mousemove
+                    mouseup
+                    mouseout
+                第三个事情
+                  先动起来
+                  3-1. 按下去的时候记录坐标点
+                  3-2. 移动的时候记录坐标点
+                  3-3. 鼠标抬起来的时候，取消 mousemove 事件
+                第四个事情
+                  鼠标抬起来以后交换位置
+                4-1. 先判断和谁有接触
+                    - 用我自己的 offsetLeft 也和每一个元素的 offsetLeft 进行运算和盒子的宽度进行比较
+                4-2.  判断和谁接触面积大
+                    - 循环 touchArr 就可以了
+                    - 自己的盒子的宽度 - Math.abs(自己的 offsetLeft - item.offsetLeft)
+                4-3.  交换两个元素的位置
+              */
+
+
+        // 获得 ul 的高宽
+        var ulWidth = ul.clientWidth
+        var ulHeight = ul.clientHeight
+            // 准备连个变量 X Y轴
+        var startX, startY
+        var moveX, moveY
+            // 准备变量 相对 ul 偏移位置
+        var startLeft, startTop
+        addColor()
+        bindEvent()
+
+        function bindEvent() {
+
+            // 给每个 item 加 mousedown 事件
+            lis.forEach(function(item) {
+                // 绑定 mousedown
+                item.addEventListener('mousedown', function(e) {
+                        e = e || window.event
+                            // down 点击时的位置坐标
+                            // console.log(e.clientX)
+                        startX = e.clientX - this.offsetLeft
+                        startY = e.clientY - this.offsetTop
+                        startLeft = this.offsetLeft
+                        startTop = this.offsetTop
+                            // console.log(startLeft, startTop)
+                            // console.log(startLeft, startTop)
+                            // console.log(startX, startY)
+                            // 绑定 mosuemove  this.addEventListener('事件类型', 函数)
+                        this.style.transition = 'none'
+                        this.addEventListener('mousemove', move)
+                            //绑定 mouseout   
+                        this.addEventListener('mouseout', out)
+                            // 绑定 mouseup
+                        this.addEventListener('mouseup', up)
+
+                    })
+                    // 取消绑定事件
+                item.addEventListener('selectstart', function(e) {
+                    e = e || window.event
+                    e.preventDefault()
+                })
+            })
+        }
+        // move函数
+        function move(e) {
+            e = e || window.event
+            moveX = e.clientX - startX
+            moveY = e.clientY - startY
+                // console.log(moveX)
+            if (moveX < 0) {
+                moveX = 0
+            }
+            if (moveY < 0) {
+                moveY = 0
+            }
+            if (moveX + this.clientWidth >= ulWidth) {
+                moveX = ulWidth - this.clientWidth
+            }
+            if (moveY + this.clientHeight >= ulHeight) {
+                moveY = ulHeight - this.clientHeight
+            }
+            this.style.left = moveX + 'px'
+            this.style.top = moveY + 'px'
+                //this.style.transition = ''
+            this.style.zIndex = 10
+        }
+
+        // up 函数
+        function up(e) {
+            e = e || window.event
+            var Athis = this
+                // this.removeEventListener('mouseout', out)
+                // 当 up 时判断点击目标与那些 li 有重叠
+            var arr = []
+            lis.forEach(function(item) {
+                    var x = Athis.offsetLeft - item.offsetLeft
+                    var y = Athis.offsetTop - item.offsetTop
+                        // console.log(x, y)
+                    if (item !== Athis) {
+                        if (Math.abs(x) <= Athis.clientWidth && Math.abs(y) <= Athis.clientHeight) {
+                            arr.push(item)
+                        }
+                        // console.log(arr)
+                    }
+                })
+                // 判断目标与重叠的的元素中  那个的面积最大
+            var maxS = 0
+            var max = null
+            arr.forEach(function(item) {
+                var xx = Athis.clientWidth - Math.abs(Athis.offsetLeft - item.offsetLeft)
+                var yy = Athis.clientHeight - Math.abs(Athis.offsetTop - item.offsetTop)
+                    // console.log(xx * yy)
+                if (Math.abs(xx) * Math.abs(yy) > maxS) {
+                    maxS = Math.abs(xx) * Math.abs(yy)
+                    max = item
+                }
+
+            })
+            console.log(max)
+
+            if (max === null) {
+                this.style.transition = 'all .5s linear'
+                this.style.left = startLeft + 'px'
+                this.style.top = startTop + 'px'
+                this.style.zIndex = 1
+            } else {
+                // 我找到的哪个接触面积最大的元素
+                this.style.transition = 'all .5s linear'
+                max.style.transition = 'all .5s linear'
+                this.style.left = max.offsetLeft + 'px'
+                this.style.top = max.offsetTop + 'px'
+                max.style.left = startLeft + 'px'
+                max.style.top = startTop + 'px'
+                this.style.zIndex = 1
+            }
+            this.removeEventListener('mousemove', move)
+            this.removeEventListener('mouseout', out)
+        }
+        // out函数
+        function out(e) {
+            e = e || window.event
+            this.style.left = startLeft + 'px'
+            this.style.top = startTop + 'px'
+            this.style.zIndex = 1
+            this.removeEventListener('mousemove', move)
+            this.removeEventListener('mouseout', out)
+            this.removeEventListener('mouseup', up)
+            this.style.transition = 'all .5s linear'
+
+        }
+
+
+        function addColor() {
+            var arr = ['yellow', 'blue', 'red', 'pink', 'purple', 'orange', 'hotpink', 'green', 'skyblue']
+            lis.forEach(function(item, index) {
+                item.style.backgroundColor = arr[index]
+            })
+        }
+    </script>
+</body>
+
+</html>

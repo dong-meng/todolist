@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+
+        // function fn() {
+        //     console.log(
+        //         Math.random())
+        // }
+        // fn()
+
+
+
+        var arr = []
+            // 生成五个  五位数
+        for (var i = 1; i <= 5; i++) {
+            var ret = parseInt(Math.random() * 100000)
+            arr.push(ret)
+        }
+        console.log(arr)
+
+        // 判断每个数的  每位数
+        for (var k = 0; k <= 4; k++) {
+            var q = parseInt(arr[k] / 10000)
+            var w = parseInt(arr[k] % 10000 / 1000)
+            var e = parseInt(arr[k] % 1000 / 100)
+            var r = parseInt(arr[k] % 100 / 10)
+            var t = parseInt(arr[k] % 10)
+            console.log(q, w, e, r, t)
+        }
+    </script>
+</body>
+
+</html>

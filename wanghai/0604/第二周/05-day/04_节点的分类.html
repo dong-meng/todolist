@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    我是一个文本节点
+    <!-- 我是一个注释 -->
+    <p a='100' b="200" class="box box1">1</p>
+    <p>2</p>
+  </div>
+
+  <script>
+    var div = document.querySelector('div')
+
+    // 一个文本节点
+    var text = div.childNodes[0]
+
+    // 一个注释节点
+    var comment = div.childNodes[1]
+
+    // 一个元素节点
+    var ele = div.childNodes[3]
+
+
+    // 有一个方法用来获取属性节点
+    // attributes
+    // 获取到一个元素身上的所有属性节点
+    // 得到的是一个 Map 数据类型
+    // 得到的是你有几个属性就有几个东西
+    // 只能拿到属性名称
+    // 是一个属性节点的集合
+    // 一个属性节点
+    var attrs = ele.attributes[2]
+    // console.log(attrs)
+
+
+    // 每一个节点都有自己的节点类型
+    // nodeType
+    // 用数字来表示你是什么类型的节点
+    // console.log(ele.nodeType)      // 元素节点的 nodeType === 1
+    // console.log(attrs.nodeType)    // 属性节点的 nodeType === 2
+    // console.log(text.nodeType)     // 文本节点的 nodeType === 3
+    // console.log(comment.nodeType)  // 注释节点的 nodeType === 8
+
+
+    // 每一个节点都有自己的节点名称
+    // nodeName
+    // 用来表示节点名称的
+    // console.log(ele.nodeName)       // 元素节点的 nodeName === 大写标签名
+    // console.log(attrs.nodeName)     // 属性节点的 nodeName === 属性名
+    // console.log(text.nodeName)      // 文本节点的 nodeName === #text
+    // console.log(comment.nodeName)   // 注释节点的 nodeName === #comment
+
+    // 每一个节点都有自己的节点内容
+    // nodeValue
+    // 用来表示节点内容的
+    // console.log(ele.nodeValue)       // 没有 nodeValue，值是 null
+    // console.log(attrs.nodeValue)     // 属性节点的 nodeValue === 属性的值
+    // console.log(text.nodeValue)      // 文本节点的 nodeValue === 文本内容
+    // console.log(comment.nodeValue)   // 注释节点的 nodeValue === 注释内容
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>初级运动函数Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: absolute;
+            top: 0;
+            left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+
+    <script>
+        const div = document.querySelector('div')
+        div.addEventListener('click', function() {
+            move(this, 300, 'left')
+        })
+
+
+        // 创建位移函数 move
+        function move(ele, target, attr) {
+            let j = 10 //初始位置需从新获取  在这儿不能直接调用 getstyle 函数
+            setInterval(fn = () => {
+                j++
+                if (j >= target) {
+                    j = 10
+                    console.log(getstyle(ele, attr))
+                }
+                ele.style[attr] = j + 'px'
+
+            }, 30)
+        }
+        // 获得元素的属性值 
+        function getstyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele)[attr]
+            }
+            if (currentstyle) {
+                return ele.currentstyle(attr)
+            }
+        }
+    </script>
+</body>
+
+</html>

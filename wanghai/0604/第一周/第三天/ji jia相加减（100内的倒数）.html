@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 奇数分之一相加 偶数分之一相减
+        // for循环语句
+        var he = 0
+        var cha = 0
+        for (var i = 1; i <= 100; i++) {
+            // if语句判断 i 为奇偶数
+            // 当 i 为偶数时相减
+            if (i % 2 == 0) {
+                var x = 1 / i
+                    // var he = 1
+                he -= x
+            } else {
+                var y = 1 / i
+                    // var cha = 0
+                cha += y
+            }
+            var rest = he + cha
+        }
+        console.log(rest)
+    </script>
+</body>
+
+</html>

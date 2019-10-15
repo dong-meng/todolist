@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>树状菜单Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .banner {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        ul {
+            font-size: 30px;
+        }
+        
+        .banner {
+            margin: 50px auto;
+            width: 600px;
+        }
+        
+        li {
+            list-style: none;
+            color: blue;
+        }
+        
+        p {
+            color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul>
+            我是一级
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+        </ul>
+        <ul>
+            我是一级
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+        </ul>
+        <ul>
+            我是一级
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+            <li>wishing二级
+                <p>我是三级</p>
+                <p>我是三级</p>
+                <p>我是三级</p>
+            </li>
+        </ul>
+    </div>
+
+    <script src="./jquery/jquery.min.js"></script>
+    <script>
+        $('p').css('display', 'none')
+        $('li').css('display', 'none')
+            // console.log($('div').eq(1))
+        $('ul').hover(
+            function() {
+                $(this).find('li').css('display', 'block').hover(
+                    function() {
+                        $(this).find('p').css('display', 'block')
+                    },
+
+                    function() {
+                        $(this).find('p').css('display', 'none')
+
+                    })
+            },
+
+
+
+            function() {
+                $('li').css('display', 'none')
+            })
+    </script>
+</body>
+
+</html>

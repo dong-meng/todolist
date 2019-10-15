@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        class getHome {
+            init() {
+                console.log('wo')
+            }
+        }
+
+        class getCompty {
+            init() {
+                console.log('yao')
+
+            }
+        }
+
+        class getGame {
+            init() {
+                console.log('ni')
+
+            }
+        }
+
+
+        // 组合在一起 （init 添加在一个数组(启动器)）
+        class Compose {
+            constructor() {
+                this.event = [] //装所有执行函数 init
+            }
+
+            // 需要一个函数（方法） 往 this.event中加东西
+
+            add(obj) {
+                this.event.push(obj)
+            }
+
+            // 需要一个启动器  让所有 event 中 init 直接启动起来
+
+            execute() {
+                for (let i = 0; i < this.event.length; i++) {
+                    this.event[i].init() //让 event 中 的每一个人 init 都执行
+                }
+            }
+        }
+        const p = new Compose()
+            // 用 p.add()函数 往event 中添加  记得加 new
+        p.add(new getHome())
+        p.add(new getCompty())
+        p.add(new getGame())
+            //p.execute() 启动执行器
+        p.execute()
+    </script>
+</body>
+
+</html>

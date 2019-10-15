@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。aa
+        // 设一个空数组
+        var arr = new Array()
+        var arr1 = []
+        var arr2 = []
+        var sum = 0
+        for (var q = 1; q <= 30; q++) {
+            w = q * 2
+                // console.log(w)
+            arr.push(w)
+            sum += arr[q - 1]
+                // console.log(arr)
+            if (q % 5 === 0) {
+                arr1.push(arr)
+                arr2.push(arr)
+                arr = []
+                    // arr2.push(sum / 5)
+                    // sum = 0
+
+
+            }
+        }
+        arr2.push(arr1)
+        console.log(arr2)
+
+        // 寻找每五个值
+    </script>
+</body>
+
+</html>

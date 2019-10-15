@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // /*创建一个对象
+        // 循环遍历字符串
+        // 看看对象中有没有 a 这个成员
+        // 如果没有，我给他添加一个 a 这个成员值是 1
+        // 如果有，我吧它现在的值 +1
+        // var obj = {} 
+        // obj.a = 1
+        // obj['a'] = 1*/
+        var str = 'abcdacbabcbababcbabcabd'
+        var obj = {}
+            // 循环 str.length 次
+        for (var i = 0; i < str.length; i++) {
+            // 将str[i] 赋值给key
+            var key = str[i]
+
+            if (obj[key]) { //这个是判断obj里有没有 key 这个键 （成员）
+                obj[key]++
+            } else {
+                obj[key] = 1
+            }
+        }
+        // for in 循环遍历  打印 obj 成员
+        for (var key in obj) {
+            document.write(key + obj[key])
+        }
+    </script>
+</body>
+
+</html>

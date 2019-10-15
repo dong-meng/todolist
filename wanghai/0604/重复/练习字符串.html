@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 字符串 创建
+        var str = 'qw,10,er' //创建空字符串
+        str.length //字符串长度 返回值为  number 
+        str.indexOf('项') //按照项的值找到该项的索引值  如没有 则返回值为 -1
+        str.charAt('索引值') // 按照索引值找到该项  如没有则返回空字符串  ''
+        str.charCodeAt('索引值') // 按照索引找该项，返回值为该项的 unicode 编码
+        str.substring('开始索引值', '结束索引值') //截取 str 内容，包前不包后
+        str.substr('开始索引值', '截取多少位') // 截取 str 内容
+            // capy(str,开始索引值，截取几位)   也能截取字符串内容
+        Insert(str, '要插入的内容', '放在第几位') //将要插入的内容放在 str 的第几位
+        str.replace(x, y) //str 中以 y 代替 x ，用于替换敏感字
+        var arr = str.split() // 将字符串转换为数组
+            // 字符串的增删改查：将之转为数组，再操作
+        Str(x, str) //把数值 x 转换为 字符串 str
+        val(str, x) //把字符串 str 转换为数字 x
+        str.toLowerCase() //把字符串内容全转为小写
+        str.toUpperCase() //把字符串内容全转为大写
+    </script>
+</body>
+
+</html>

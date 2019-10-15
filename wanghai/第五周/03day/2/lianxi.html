@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+<div></div>
+
+<body>
+    <!-- <script src="./first.php"></script>
+    <script src="./index.text"></script> -->
+
+    <script>
+        // const div = document.querySelector('div')
+        //     // 动态创建
+        // const script = document.createElement('script')
+        // div.onmousedown = function() {
+        //     document.body.appendChild(script)
+        // }
+        // div.onmouseup = function() {
+        //     document.body.removeChild(script)
+        // }
+        const script = document.createElement('script')
+        script.src = 'http://www.gx.com/login.php?cb=abc'
+        document.body.appendChild(script)
+
+
+
+        function fn(res) {
+            console.log('我是二郎神')
+            console.log(res)
+        }
+        // php 那边就是  echo 'fn()'
+    </script>
+    <script src="./first.php"></script>
+</body>
+
+</html>

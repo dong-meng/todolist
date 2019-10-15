@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        <h3>阶乘之和</h3>
+        <input type="text" id="first">
+        <input type="button" id="btn" value="=">
+        <input type="text" id="rest">
+    </form>
+
+    <form action="">
+        <h3>阶乘</h3>
+        <input type="text" id="Jfirst">
+        <input type="button" id="Jbtn" value="=">
+        <input type="text" id="Jrest">
+    </form>
+
+    <script>
+        // 阶乘 
+        // 5的阶乘
+        function fn(a) {
+            var k = 1
+            for (var i = 1; i <= a; i++) {
+                k *= i
+                    // console.log(k)
+
+            }
+            // console.log(k)
+            // return k
+            return k
+        }
+        btn.onclick = function() {
+            //利用 id 获取 阶乘之和的  input 框中输入的数字 
+            var x = first.value - 0
+            var h = 0
+            for (var i = 1; i <= x; i++) {
+                h += fn(i)
+            }
+            /* return h */
+            console.log(h)
+            rest.value = h
+        }
+        Jbtn.onclick = function() {
+            // 利用 id 获取阶乘的  input 框中输入的数字 
+            var q = Jfirst.value - 0
+                // var w = fn(q)
+            Jrest.value = fn(q)
+        }
+
+
+        // fn求阶乘之和
+        // function fun(a, b) {
+        //     // 找出a--b之间的数
+        //     var res = 0
+        //     for (var q = a; q <= b; q++) {
+        //         res += fn(q)
+
+        //     }
+        //     return res
+        // }
+        // console.log(fun(2, 6))
+
+
+        //     function fn(n1, n2, type) {
+        //         var res
+        //         if (type === '+') {
+        //             res = n1 + n2
+        //         } else if (type === '-') {
+        //             res = n1 - n2
+        //         }
+
+        //         return res
+        //     }
+
+        // var res = fn(1, 2, '-')
+        // console.log(res)
+    </script>
+</body>
+
+</html>

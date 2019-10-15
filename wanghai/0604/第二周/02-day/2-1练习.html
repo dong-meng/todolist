@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var arr = []
+            //过滤 arr.filter(function (item, index, arr)     substr 也是用来截取字符串的
+        function fn() {
+            var str = 'asdasdSMasdasdasdSMsdasdasdSMsadasd'
+                // 　字符串变数组　　var b="0-1-2-3-4-5"；　　　　　　　　　　　　　　　　　　
+                //                  var a = b.split("-"); 在-分解     
+            for (var i = 0; i <= str.length - 1; i++) {
+                var lit = str.substr(i, 1)
+                arr.push(lit)
+            }
+            return arr
+        }
+        fn()
+        console.log(arr)
+            // 数组筛选替换  且换位字符串  arr.join()
+        var newArr = arr.filter(function(item, index) {
+            return item !== 'S' && item !== 'M'
+        })
+        console.log(newArr)
+        str = newArr.join('')
+        console.log(str)
+    </script>
+</body>
+
+</html>

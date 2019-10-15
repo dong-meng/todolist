@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        // 在页面上出现一个倒计时，显示现在到某一时间点的倒计时（以汉字的形式出现倒计时）
+        function fn() {
+            var time = new Date()
+            var time1 = new Date('2019-08-01')
+            time = time.getTime()
+            time1 = time1.getTime()
+                // 一共多少秒
+            var time2 = (time1 - time) / 1000
+                // 其中多少天
+            var x = parseInt(time2 / 60 / 60 / 24)
+                // 其中多少小时
+            var y = parseInt((time2 - (x * 24 * 60 * 60)) / 60 / 60)
+                // 其中多少分
+            var z = parseInt(time2 / 60 - (x * 24 * 60) - y * 60)
+                // 其中多少秒
+            var k = parseInt(time2 - (x * 24 * 60 * 60) - y * 60 * 60 - z * 60)
+            var rest = x + '天' + y + '小时' + z + '分' + k + '秒'
+            return rest
+        }
+        fn()
+
+        setInterval(
+            function() {
+                var dao = new Date()
+                box.innerText = fn()
+            },
+            1000
+        )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>楼层导航 Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            overflow: auto;
+        }
+        
+        div {
+            position: absolute;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <P>我是顶部</P>
+        <P>我是logo</P>
+        <P>我是列表</P>
+        <P>我是内容</P>
+        <P>我是广告</P>
+        <P>我是底部</P>
+        <P>我是页码</P>
+        <ul>
+            <li>我是顶部</li>
+            <li>我是logo</li>
+            <li>我是列表</li>
+            <li>我是内容</li>
+            <li>我是广告</li>
+            <li>我是底部</li>
+            <li>我是页码</li>
+        </ul>
+    </div>
+    <script src="./jquery/jquery.min.js"></script>
+    <script>
+        $('P').css({
+            width: 800,
+            height: 400,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: 100,
+            color: 'black',
+            border: '5px solid blue',
+        })
+
+        $('ul').css({
+            listStyle: 'none',
+            position: 'fixed',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            right: 40,
+        })
+
+        $('li').css({
+            listStyle: 'none',
+            width: 100,
+            height: 30,
+            background: 'orange',
+            color: 'black',
+            border: '5px solid gray',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        })
+
+        // 事件
+
+        // $("li").on("click", function() {
+        //     // var top = (410 * $(this).index())
+
+        //     // var $top = $('p').eq($(this).index()).offset().top;
+        //     //获取每个楼梯的offsetTop值
+        //     $('html,body').animate({ //$('html,body')兼容问题body属于chrome
+        //         scrollTop: $('p').eq($(this).index()).offset().top
+        //     })
+        // });
+
+
+        $('li').click(function() {
+            let $top = (410 * $(this).index())
+
+            var $h = $('p').eq($(this).index()).offset().top; //offset为获取匹配元素在当前视口的相对偏移，有top和left；
+            $('html,body').animate({
+                scrollTop: $top
+            }, 500)
+        })
+    </script>
+
+</body>
+
+</html>

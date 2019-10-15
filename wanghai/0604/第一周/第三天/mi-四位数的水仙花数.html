@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>四位数的水仙花数</h2>
+    <!-- <input type="text" id="first" placeholder="请输入一个五位以内的数字">
+    <input type="button" id="btn" value="判断">
+    <input type="text" id="rest" value=""> -->
+
+    <script>
+        for (var r = 1000; r <= 9999; r++) {
+            // var q /* 万位数 */
+            var w /* 千位数 */
+            var i /* 百位数 */
+            var y /* 十位数 */
+            var k /* 个位数 */
+            w = parseInt(r / 1000) /* 千位数除1000 ，先取小数点前整数  获得 千 万 两个数字*/
+            i = parseInt(r / 100) /* 除100 取整，得 百 千 万三个数字 */
+            i = (i % 10) /* 再除 10 取余数  得百位数的数字 */
+            y = parseInt(r % 100) /* 除100 取余数，得 个位 和 十位数两个个数字 */
+            y = parseInt(y / 10) /* 再除 10 取整数  得十位数的数字 */
+            k = r % 10 /* 除 10 取余数 获得个位数的数字 */
+                // console.log(q)
+                // console.log(w)
+                // console.log(i)
+                // console.log(y)
+                // console.log(k)
+            if (r === w * w * w * w + i * i * i * i + y * y * y * y + k * k * k * k) {
+                document.write(r + ' ')
+            }
+            // 水仙花数  即每个位置上的数自相乘四次  再相加之后与这个数相等 （四位数）
+
+        }
+    </script>
+</body>
+
+</html>

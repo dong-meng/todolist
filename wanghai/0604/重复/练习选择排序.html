@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 练习选择排序
+        var arr = []
+            // 生成一个随机数组
+        function fn() {
+            for (var i = 1; i <= 20; i++) {
+                var sum = Math.random()
+                arr.push(parseInt(sum * 1000))
+            }
+            return arr
+        }
+        fn()
+        console.log(arr)
+
+        // 将数组排序
+        var empty
+        for (var k = 0; k <= arr.length; k++) {
+            for (var i = 0; i <= arr.length; i++) {
+                if (arr[i] < arr[k]) {
+                    empty = arr[k]
+                    arr[k] = arr[i]
+                    arr[i] = empty
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div {
+            width: 640px;
+            height: 280px;
+            border: 10px solid olive;
+            margin: 30px auto;
+            display: flex;
+        }
+        
+        p {
+            width: 160px;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <p><img src="./img/01.jpg" alt="" class=""></p>
+        <p><img src="./img/02.jpg" alt="" class=""></p>
+        <p><img src="./img/03.jpg" alt="" class=""></p>
+        <p><img src="./img/04.jpg" alt="" class=""></p>
+    </div>
+
+
+    <script src="./jquery/jquery.min.js"></script>
+    <script>
+        // 移入时
+        $('p').mouseover(function() {
+            $('p').stop()
+
+            $(this).siblings()
+                .animate({
+                    width: 40
+                }, 1000)
+                .end()
+                .animate({
+                    width: 520
+                })
+        })
+
+        // 移出时 
+        $('div').mouseleave(function() {
+            $('p').stop()
+
+            $('p').animate({
+                width: 160
+            })
+        })
+    </script>
+</body>
+
+</html>

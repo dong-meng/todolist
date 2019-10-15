@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加创建标签书写表格（有一个删除功能）Document</title>
+
+    <style>
+        table {
+            /* width: 500px;
+            height: 500px; */
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>选择</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var arr = [{
+                name: 'Jack',
+                age: 18,
+                gender: '男',
+            }, {
+                name: 'Rose',
+                age: 20,
+                gender: '女',
+            }, {
+                name: 'Tom',
+                age: 22,
+                gender: '男',
+            }]
+            // 使用事件委托来书写表格（有一个删除功能）
+            // 写出表格
+        var tBody = document.querySelector('tbody')
+        fun()
+
+        function fun() {
+            tBody.innerHTML = ''
+            for (var i = 0; i < arr.length; i++) {
+                var tr = document.createElement('tr')
+                for (var key in arr[i]) {
+
+                    var td = document.createElement('td')
+                    td.innerHTML = arr[i][key]
+                    tr.appendChild(td)
+                }
+                var del = document.createElement('td')
+                del.innerHTML = '删除'
+                del.setAttribute('class', 'del')
+                del.setAttribute('idx', i)
+
+                tr.appendChild(del)
+                tBody.appendChild(tr)
+            }
+            // 删除功能
+            var dell = document.getElementsByClassName('del')
+            for (var j = 0; j < dell.length; j++) {
+                dell[j].onclick = function() {
+                    var idx = this.getAttribute('idx')
+                    console.log(idx)
+                    arr.splice(idx, 1)
+                    console.log(arr)
+                    fun()
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索框 Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        input {
+            display: block;
+            width: 500px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 50px auto 0;
+            padding-left: 20px;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        ul {
+            width: 500px;
+            height: 500px;
+            border: 1px solid gray;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <ul></ul>
+
+
+
+    <script>
+        const input = document.querySelector('input')
+        const ul = document.querySelector('ul')
+
+        input.addEventListener('input', function() {
+            let key = input.value
+                // 动态创建 script 标签
+            let script = document.createElement('script')
+            script.id = 'jsonp'
+
+            const scriptAll = document.querySelectorAll('script')
+
+            scriptAll.forEach(item => {
+                if (item.className === 'jsonp') {
+                    script = item
+                }
+            })
+
+            script.src = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1467,21112,28132,28267,27244&wd=${key}&req=2&csor=2&pwd=a&cb=fn&_=1565160327458`
+            window.fn = function(res) {
+                let str = ''
+                if (res.g) {
+                    res.g.forEach(item => {
+                        str += `<li>${item.q}</li>`
+                    })
+                    ul.innerHTML = str
+                    ul.style.display = 'block'
+                } else {
+                    ul.style.display = 'none'
+                }
+                document.body.removeChild(script)
+            }
+            document.body.appendChild(script)
+        })
+    </script>
+</body>
+
+</html>

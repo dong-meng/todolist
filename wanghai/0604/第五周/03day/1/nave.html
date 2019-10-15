@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX 交互 Document</title>
+</head>
+
+<body>
+    <form action="">
+        用户名： <input type="text">
+        <br>密码： <input type="password">
+        <br><button>登陆</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('form')
+        const inps = document.querySelectorAll('input')
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault()
+
+            let username = inps[0].value
+            let password = inps[1].value
+                // console.log('we')
+            if (username && password) {
+
+                // 创建 ajax 对象
+                const xhr = new XMLHttpRequest()
+
+                // 配置地址 和 请求方式
+                xhr.open('POST', './login.php')
+
+                // 发生请求
+                // 设置 请求头
+                xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+                    // xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+                    // 发送
+                xhr.send(`username=${username}&password=${password}`)
+                    // 接收响应
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && /2\d{2}/.test(xhr.status)) {
+                        // const res = xhr.responseText
+                        const res = xhr.responseText
+                        if (res === '登陆成功') {
+                            window.location.href = './cart.html'
+                        } else if (res === '账号或密码有误') {
+                            console.log('we')
+                        }
+                    }
+                }
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

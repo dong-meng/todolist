@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        账号： <input type="text" name="" id="first"> 密码： <input type="text" name="" id="second">
+        <input type="submit" value="注册" id="btn">
+    </form>
+
+    <script>
+        //   制定正则
+        var reg = /^\d{8,11}@(qq|162|163|yahoo|email)\.(com|net|sina)$/
+        var reg1 = /^\w{0,16}$/
+            // 点击获取并执行判断
+        btn.onclick = function(e) {
+            e = e || window.event
+            e.preventDefault() ? e.e.preventDefault() : returnValue = false
+                // 获得input数据
+            var x = first.value
+            var y = second.value
+                // 正则判断是否符合格式
+            var res = reg.test(x)
+            var res1 = reg1.test(y)
+            if (res && res1) {
+                console.log('注册成功')
+                alert('注册成功')
+            } else {
+                if (res) {
+                    if (res1 === false) {
+                        alert('密码不得与近期相同或格式不对')
+                    }
+                } else {
+                    alert('账号格式错误')
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 核心代码Document</title>
+</head>
+
+<body>
+
+    <script>
+        class Utils {}
+
+
+        var setCss
+
+        function Singleton() {
+
+            if (!setCss) {
+                setCss = new Utils()
+            }
+            return setCss
+            return 123
+        }
+        const p = Singleton()
+        const p1 = Singleton()
+
+        console.log(p === p1)
+        console.log(p)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 2的64立方和  每 1 的重量是0.00001kg
+        // for循环64次
+        var rest = 1
+        var he = 0
+        var kg
+        for (var i = 1; i <= 63; i++) {
+            // i 没加一次  就乘一次2 我的初始是从第二个格子开始 所以最后结果再加 0.00001kg
+            rest *= 2
+            console.log(rest)
+                // 每加一次格子 就质量相加一次
+            he += rest
+            console.log(he)
+        }
+        kg = he * 0.00001 + 0.00001
+            // 输出的粒数 he + 1
+        document.write(he)
+        document.write('<br>')
+            // 输出的总量 kg
+        document.write(kg)
+    </script>
+</body>
+
+</html>

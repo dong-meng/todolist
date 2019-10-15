@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .banner {
+            width: 600px;
+            height: 460px;
+            border: 3px solid gray;
+            margin: 15px auto;
+        }
+        
+        .tabs {
+            width: 100%;
+            height: 50px;
+            border-bottom: 1px solid gray;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        li {
+            /* list-style: none; */
+            background-color: gray;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .webpage {
+            width: 600px;
+            height: 400px;
+            background: gold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            color: aliceblue;
+            position: absolute;
+        }
+        
+        .active {
+            z-index: 10;
+        }
+        
+        .bkc {
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="banner">
+
+        <ul class="tabs">
+            <li>我是第一网页</li>
+            <li>我是第二网页</li>
+            <li>我是第三网页</li>
+        </ul>
+
+        <div class="webpage">我是第一网页</div>
+        <div class="webpage">我是第二网页</div>
+        <div class="webpage">我是第三网页</div>
+
+    </div>
+
+
+    <script src="./jquery/jquery.min.js"></script>
+
+    <script>
+        $(".tabs li").on("click", function() {
+            $(".tabs li").removeClass("bkc").eq($(this).index()).addClass("bkc")
+            $(".webpage").removeClass("active").eq($(this).index()).addClass("active")
+        })
+    </script>
+</body>
+
+</html>

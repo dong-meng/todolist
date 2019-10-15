@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        .container {
+            width: 600px;
+            height: 400px;
+            border: 10px solid #333;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container>ul {
+            width: 100%;
+            height: 40px;
+            display: flex;
+        }
+        
+        .container>ul>li {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: #fff;
+            background-color: hotpink;
+        }
+        
+        .container>ul>li.active {
+            background-color: orange;
+        }
+        
+        .container>ol {
+            flex: 1;
+            position: relative;
+        }
+        
+        .container>ol>li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: skyblue;
+            color: #fff;
+            font-size: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        
+        .container>ol>li.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+
+
+    <script>
+        var btns = document.querySelectorAll('ul > li')
+        var tabs = document.querySelectorAll('ol > li')
+            /*
+              获取到每一个 ul 里面的 li 是 按钮
+              获取到每一个 ol 里面的 li 是 切换的选项卡
+
+              给 btns 里面的每一个 li 添加一个点击事件
+                + 要让所有的 li 没有 active 类名
+                + 要让自己有 active 类名
+
+                + 要让所有的 tabs 里面的 li 都没有 active 类名
+                + 让和 btns 里面 li 索引配套的那个 tabs 里面的 li 显示
+
+                + 我不知道我点击的那个 li 索引是多少
+                + 再点击事件之前，把对应的索引存储再 li 身上
+                  = 第 0 个 li 存储一个自定义属性值就是 0
+                  = 第 1 个 li 存储一个自定义属性值就是 1
+                  = 第 2 个 li 存储一个自定义属性值就是 2
+            */
+
+        for (var i = 0; i < btns.length; i++) { // 这个循环是为了给每一个 li 添加点击事件
+            // 给每一个 li 添加一个自定义属性
+            btns[i].setAttribute('index', i)
+            btns[i].onclick = function() {
+                // 1. 让所有的 li 都没有类名
+                for (var j = 0; j < btns.length; j++) { // 这个循环是为了让所有的 li 没有类名
+                    // j = 0 1 2
+                    btns[j].className = ''
+                        // 让所有的选项卡都没有类名
+                    tabs[j].className = ''
+                }
+
+                // 2. 给自己加上 active 类名
+                // 自己就是 this
+                this.className = 'active'
+
+                // 3. 找到自己是索引几
+                var index = this.getAttribute('index')
+
+                // index 就能知道我点击的是索引为几的 li
+                // 如果我点击的是索引 0 的li，应该让 tabs 里面索引为 0 的那个显示
+                // 如果我点击的是索引 1 的li，应该让 tabs 里面索引为 1 的那个显示
+                // 如果我点击的是索引 2 的li，应该让 tabs 里面索引为 2 的那个显示
+                tabs[index].className = 'active'
+            }
+        }
+
+        /*
+          思路：
+            1. 获取所有按钮
+            2. 获取所有选项卡
+            3. 给每一个按钮身上记录一下索引
+            4. 给每一个按钮添加点击事件
+              1. 循环让每一个按钮和选项卡都没有类名
+              2. 让点击的这个按钮有类名
+              3. 让和点击按钮配套的那个选项卡有类名
+        */
+    </script>
+</body>
+
+</html>

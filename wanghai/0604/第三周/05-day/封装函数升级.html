@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 300px;
+            height: 300px;
+            background: yellow;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+
+    <script>
+        const div = document.querySelector('div')
+        div.addEventListener('click', function() {
+                move(this, {
+                    left: 300,
+                    top: 200
+                })
+            })
+            // 创建位移函数 move
+        function move(ele, target) {
+            const obj = {}
+            for (let attr in target) {
+                // arrt 就是属性
+                // style[attr] 就是属性值
+
+                obj[attr] = setInterval(fun = () => {
+                    let curstyle = parseInt(getstyle(ele, attr)) //当前位置
+                    let speed = (target[attr] - curstyle) / 5 //每次移动的距离百分比
+
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+
+                    console.log(ele.style.left, ele.style.top)
+                        // console.log(target[attr])
+                    console.log('asf')
+                    if (curstyle === target[attr]) {
+                        delete obj[attr]
+                        if (objLenght(obj) === 0) {
+                            curstyle = 0
+                            speed = 0
+                            ele.style.top = 0
+                            ele.style.left = 0
+                        }
+                    }
+                    ele.style[attr] = curstyle + speed + 'px'
+                }, 50)
+            }
+        }
+        // 获得元素的属性值 
+        function getstyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele)[attr]
+            }
+            if (currentstyle) {
+                return ele.currentstyle(attr)
+            }
+        }
+        // 判断 obj 函数是否为空
+        function objLenght(obj) {
+            let y = 0
+            for (let key in obj) {
+                y++
+            }
+            return y
+        }
+    </script>
+</body>
+
+</html>

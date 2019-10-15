@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <section>
+        <p> <progress id=" progress" max=" 100 "> <span>0</span><span>%</span></p>
+        百分比进度:<progress value="50" max="100"></progress><br>
+            <input type=button onClick=click1 () value="暂停" />
+            <section>
+
+
+                <script>
+                    function click1() {
+                        let progress = document.getElementById('progress')
+                        progress.getElementByTagName(span)[0].textContent = "0"
+                        for (var i = O; i <= 100; i++) {
+                            updateProgress(i)
+                        }
+                    }
+
+                    function updateProgress(newValue) {
+                        let progress = document.getElementById('progress')
+                        progress.value = newValue;
+                        progress.getElementByTagName(span)[0].textContent = newValue
+                    }
+
+
+                    // set ES6 中国 一个像数组的 数据集合
+                </script>
+</body>
+
+</html>

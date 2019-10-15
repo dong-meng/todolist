@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box {
+            height: 500px;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">women</div>
+
+    <script>
+        // 编写一个函数，获得一个十六进制的随机颜色的字符串(例如：#20CD4F)
+        function fn(a) {
+            var sun = Math.floor(Math.random() * (a + 1))
+                // console.log(sun.toString(16))
+            var num = sun.toString(16)
+                // 可有可无
+                // if (num.length < 2) {
+                //     num = "0" + num;
+                // } else {
+                //     num = num;
+                // }
+                // console.log(num)
+            return num
+        }
+        // fn(255)
+
+        // 点击事件  （点击）
+        // box.onclick = function() {
+        //     var re = '#' + fn(255) + fn(255) + fn(255)
+        //     console.log(re)
+        //         // document.box.backgroundColor = re
+        //     document.body.style.backgroundColor = re
+        // }
+
+        // 自动事件  SetInterval (函数，循环间隔事件)
+        setInterval(() => {
+            var re = '#' + fn(255) + fn(255) + fn(255)
+            console.log(re)
+                // 赋值背景颜色
+            document.body.style.backgroundColor = re
+        }, 100);
+    </script>
+</body>
+
+</html>

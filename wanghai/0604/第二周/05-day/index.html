@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      height: 0;
+      background-color: #e3e3e3;
+
+      overflow: hidden;
+      transition: height .5s linear;
+    }
+
+    ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      /* ios 可以使用 */
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    li {
+      width: 300px;
+      height: 220px;
+      background-color: pink;
+    }
+
+    li:nth-child(1) {
+      /*            image       repeat    position    size */
+      background: url(./1.jpg) no-repeat 100% 100% / 300px 220px;
+    }
+
+    li:nth-child(2) {
+      background: url(./2.jpg) no-repeat 100% 100% / 300px 220px;
+    }
+
+    li:nth-child(3) {
+      background: url(./3.jpg) no-repeat 100% 100% / 300px 220px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <button>换肤</button>
+
+  <script>
+    /*
+      点击按钮可以下来
+      再点击按钮还能上去
+        - js 开关
+        - 先定义一个变量为 true
+        - 点击按钮的时候让他取反
+        - 判断 true 的时候开
+        - 判断 false 的时候关
+    */
+
+    var btn = document.querySelector('button')
+    var box = document.querySelector('.container')
+    // 只有 querySelectorAll 获取的伪数组可以使用 forEach 方法
+    var lis = document.querySelectorAll('li')
+
+    var flag = true
+
+    btn.onclick = function () {
+      if (flag) {
+        box.style.height = '250px'
+        flag = !flag
+      } else {
+        box.style.height = '0'
+        flag = !flag
+      }
+    }
+
+    // 给每一个 li 添加点击事件
+    lis.forEach(function (item) {
+      item.onclick = function () {
+        /*
+          拿到我自己的背景图片
+          把我的背景图片给到 body 就可以了
+
+          每一个 li 身上有一个点击事件
+          再事件处理函数里面有一个 this => 事件源（谁身上的事件）
+          点击的是第一个 li 触发的是第一个 li 身上的事件 this => 第一个 li
+          点击的是第二个 li 触发的是第二个 li 身上的事件 this => 第二个 li
+        */
+       // 这里的 this 就是我点击的那个 li
+       var img = window.getComputedStyle(this).backgroundImage
+       document.body.style.background = img + 'no-repeat 100% 100% / 100% 100%'
+
+       // 让 box 自己回去
+       box.style.height = '0px'
+       flag = true
+      }
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        input {
+            width: 580px;
+            height: 40px;
+            margin: 30px auto 0;
+            outline: none;
+            display: block;
+            padding-left: 20px;
+        }
+        
+        ul {
+            width: 600px;
+            margin: 0 auto;
+            border: 1px solid #333;
+            display: none;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text">
+    <ul></ul>
+
+
+    <script>
+        /*
+             https://www.baidu.com/sugrec?
+             pre=1&p=3&ie=utf-8&json=1&prod=pc&
+             from=pc_web&sugsid=1467,21112,28132,28267,27244&
+             wd=ai&req=2&csor=2&pwd=a&cb=fn&
+             _=1565160327458
+         */
+
+        const inp = document.querySelector('input')
+        const ul = document.querySelector('ul')
+
+        // 1. 随着输入就不停的发送请求
+        inp.addEventListener('input', function() {
+            let key = this.value
+
+            let script = document.createElement('script')
+            script.className = 'jsonp'
+
+            const scriptAll = document.querySelectorAll('script')
+
+            scriptAll.forEach(item => {
+                if (item.className === 'jsonp') {
+                    script = item
+                }
+            })
+
+            script.src = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1467,21112,28132,28267,27244&wd=${key}&req=2&csor=2&pwd=a&cb=fn&_=1565160327458`
+
+            window.fn = function(res) {
+                let str = ''
+
+                // 组装一个 ul 出来
+                if (res.g) {
+                    // 组装页面
+                    res.g.forEach(item => {
+                        str += `<li>${item.q}</li>`
+                    })
+
+                    ul.innerHTML = str
+                    ul.style.display = 'block'
+                } else {
+                    ul.style.display = 'none'
+                }
+
+                // document.body.removeChild(script)
+            }
+
+            document.body.appendChild(script)
+        })
+    </script>
+
+</body>
+
+</html>

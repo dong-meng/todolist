@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="timeBox"></p>
+
+    <script>
+        // 2019       7 月
+        // 二零一九年  七月
+
+        /*
+          // 做一个函数
+          // 传递一个四位数
+          // 返回一个四个汉字
+          2 0 1 9
+
+          // 做一个函数
+          // 传入一个两位数
+          // 返回一个两个汉字
+          1 1
+          1 7
+          1 4
+          4 5    四十五
+          4 5
+        */
+        var arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+
+        // formatNumber()
+
+        function formatNumber(n) {
+            // 接受的参数十一个数字 n
+            var str = ''
+            var a = parseInt(n / 10)
+            var b = n % 10
+                /*
+                  6  =>   六
+                  10 =>   十
+                  11 =>   十一
+                  20 =>   二十
+                  30 =>   三十
+                  45 =>   四十五
+                */
+            if (n <= 10) {
+                str += arr[n]
+            } else if (n < 20) {
+                str += '十' + arr[b]
+            } else if (n >= 20 && b === 0) {
+                str += arr[a] + '十'
+            } else if (n >= 20 && b !== 0) {
+                str += arr[a] + '十' + arr[b]
+            }
+
+            // 返回值是没准什么样子的汉字
+            return str
+        }
+
+        function formatYear(n) {
+            // 直接拆成四个汉字，用汉字拼接起来
+
+            var a = parseInt(n / 1000)
+            var b = parseInt(n % 1000 / 100)
+            var c = parseInt(n % 100 / 10)
+            var d = n % 10
+
+            // 拼接好汉字返回
+            return arr[a] + arr[b] + arr[c] + arr[d] + '年'
+        }
+
+
+        // 把当前时间格式化成为汉字
+        function formatDate(time) {
+            // 拿到年月日等信息
+            var year = time.getFullYear()
+            var month = time.getMonth() + 1
+            var day = time.getDate()
+            var hours = time.getHours()
+            var minutes = time.getMinutes()
+            var seconds = time.getSeconds()
+
+            // 准备格式化
+            month = formatNumber(month) + '月'
+            day = formatNumber(day) + '日'
+            minutes = formatNumber(minutes) + '分'
+            seconds = formatNumber(seconds) + '秒'
+
+            if (hours > 12) {
+                hours -= 12
+                hours = '下午' + formatNumber(hours) + '点'
+            } else {
+                hours = '上午' + formatNumber(hours) + '点'
+            }
+
+            year = formatYear(year)
+
+            return year + month + day + ' ' + hours + minutes + seconds
+        }
+
+        setInterval(function() {
+            var time = new Date()
+            var res = formatDate(time)
+                // 往标签里面写文本信息
+            timeBox.innerText = res
+        }, 1000)
+    </script>
+</body>
+
+</html>

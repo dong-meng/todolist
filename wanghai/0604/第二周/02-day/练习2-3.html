@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // 统计字符串中每个字符的个数？  var str = 'abcdacbabcbababcbabcabd'    
+
+        // 将字符串转换为数组  var a = b.split("-") (这是整个字符串转为一个数据) 所以我们的分开转换
+        // var arr = str.split()
+
+        var a = 0
+        var b = 0
+        var c = 0
+        var d = 0
+        var str = 'abcdacbabcbababcbabcabd'
+        for (var j = 0; j < str.length; j++) {
+            if (str[j] === 'a') {
+                a += 1
+            } else if (str[j] === 'b') {
+                b += 1
+            } else if (str[j] === 'c') {
+                c += 1
+            } else if (str[j] === 'd') {
+                d += 1
+            }
+        }
+        console.log(a + 'a', b + 'b', c + 'c', d + 'd')
+
+        /*
+            创建一个对象
+            循环遍历字符串
+            看看对象中有没有 a 这个成员
+              如果没有，我给他添加一个 a 这个成员值是 1
+              如果有，我吧它现在的值 +1
+            var obj = {} 
+            obj.a = 1
+            obj['a'] = 1
+        */
+    </script>
+</body>
+
+</html>

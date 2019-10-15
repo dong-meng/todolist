@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <script src="./move.js"></script>
+    <script>
+        const div = document.querySelector('div')
+        let X, y
+        div.onmousedown = function(e) {
+            let Xarr = []
+            let Yarr = []
+            let x = e.clientX - this.offsetLeft
+            let y = e.clientY - this.offsetTop
+
+            this.onmousemove = function(e) {
+                this.style.left = e.clientX - x + 'px'
+                this.style.top = e.clientY - x + 'px'
+                Xarr.push(e.clientX - x)
+                Yarr.push(e.clientY - y)
+            }
+            x = Xarr
+            y = Yarr
+            this.onmouseup = function() {
+                Xarr.reverse(Xarr)
+                Yarr.reverse(Yarr)
+                for (let i = 0; i < Xarr.length; i++) {
+                    // this.style.transition = 'all 2s 1s linear'
+                    move(this, {
+                        left: Xarr[i],
+                        top: Yarr[i]
+                    })
+                    if (this.style.left === x[0] || this.style.top === y[0]) {
+                        console.log('we')
+                        this.onmouseup() = ''
+                    }
+
+                    // this.style.left = Xarr[i] + 'px'
+                    // this.style.top = Yarr[i] + 'px'
+                    // console.log(this.style.left)
+                    this.onmousemove = ''
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
